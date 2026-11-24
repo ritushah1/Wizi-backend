@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ID Card</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            /* background: #eeeeee; */
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Card */
+
+        .id-card {
+            width: 305px;
+            height: 470px;
+            position: relative;
+            /* background-size: contain center center no-repeat; */
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            padding-inline: 10px !important;
+        }
+
+        /* Header */
+
+        .id-header {
+            /* padding: 20px; */
+            text-align: center;
+            background: white;
+            width: 80px;
+            height: 60px;
+            margin-block: 10px;
+            margin-inline: auto;
+        }
+
+        .logo {
+            width: 160px;
+        }
+
+        /* Profile */
+
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            width: 150px;
+            height: 150px;
+            border-radius: 16px;
+            background: white !important;
+            margin: auto;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 16px;
+            object-fit: content;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background: white !important;
+        }
+
+        /* Blue Section */
+
+        .blue-section {
+            margin-top: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        /* Name */
+
+        .employee-name {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        /* Department */
+
+        .department {
+            font-size: 16px;
+            color: #FFC233;
+            margin-top: 2px;
+        }
+
+        /* Designation */
+
+        .designation {
+            font-size: 16px;
+            color: #FFC233;
+            margin-top: 2px;
+        }
+
+        /* Info */
+
+        .info-section {
+            margin-top: 5px;
+            /* padding-inline: 15px; */
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+
+        .text-white {
+            color: #CFE6F7 !important;
+        }
+
+        .text-black {
+            color: black !important;
+        }
+
+        .fw-500 {
+            font-weight: 500;
+        }
+
+        .w-full {
+            width: 100%;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        .pl-10 {
+            padding-left: 10px;
+        }
+
+        .mt-15 {
+            margin-top: 15px;
+        }
+
+        .mt-10 {
+            margin-top: 10px;
+        }
+
+        .mt-5 {
+            margin-top: 5px;
+        }
+
+        /* Emergency */
+
+        .emergency {
+            font-size: 14px;
+            color: #FFC233;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        .authorizedSignDiv {
+            width: 100px;
+            height: 40px;
+            margin-inline: auto;
+            margin-top: 10px;
+            position: relative;
+        }
+
+        .signatureImage{
+            width: 100px;
+            height: 40px;
+        }
+
+        .bg {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: 0;
+            width: 305px;
+            height: 470px;
+        }
+
+        .bg img {
+            width: 305px;
+            height: 470px;
+        }
+
+        /* Content layer above background */
+        .id-card > *:not(.bg) {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Print styles for PDF generation */
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            @page {
+                margin: 0px !important;
+            }
+
+            .bg, .bg img {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+
+        .companyLogo {
+            -o-object-fit: content;
+            object-fit: content;
+            background: transparent;
+            border-radius: 15px;
+            width: auto;
+            height: 70px !important;
+            mix-blend-mode: darken;
+        }
+
+        .manageAddress {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+
+        .m-auto{
+            margin: auto !important;
+        }
+
+        .d-flex{
+            display: flex;
+        }
+        .justify-content-center{
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="id-card">
+        <div class="bg">
+            <img src="{{this.ApiURL}}css/assets/stavyaBG.jpg" alt="">
+        </div>
+
+        <!-- <div class="id-header"> -->
+            <div class="w-full mt-5" >
+                {{#if this.idCardData.companyLogo}}
+                <div class="text-center d-flex justify-content-center">
+                    <img class="companyLogo m-auto"
+                        src="{{this.ApiURL}}uploads/company/logo/{{ this.idCardData.companyLogo }}" />
+                </div>
+                {{/if}}
+            </div>
+        <!-- </div> -->
+
+        <div class="profile-container mt-10">
+            <!-- {{#if this.idCardData.userPhoto}} -->
+                <img class="profile-image" src="{{this.ApiURL}}uploads/user/photo/{{ this.idCardData.userPhoto }}" alt="" />
+            <!-- {{/if}} -->
+        </div>
+
+        <div class="blue-section">
+
+            <div class="employee-name">{{this.idCardData.userDisplayName}}</div>
+            <div class="department">{{ this.idCardData.departmentName }}</div>
+            <div class="designation">{{ this.idCardData.designationName }}</div>
+
+            <div class="info-section">
+
+                <div class="info-row">
+                    <div class="text-white text-left w-full">Date of expiry</div>
+                    <div class="text-white text-left">:</div>
+                    <div class="text-white text-left w-full fw-500 pl-10">{{this.idCardData.joiningDate}}</div>
+                </div>
+
+                <div class="info-row">
+                    <div class="text-white text-left w-full">Blood group</div>
+                    <div class="text-white text-left">:</div>
+                    <div class="text-white text-left w-full fw-500 pl-10">{{this.idCardData.bloodgroup}}</div>
+                </div>
+
+            </div>
+
+            <div class="emergency mt-5">
+                Emergency Contact No.
+            </div>
+            <div class="emergency text-white">
+                <span class="text-white">{{this.idCardData.otherContactNumber}}</span>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- ADD BACK ID CARD CODE HERE -->
+
+    <div class="id-card">
+        <div class="bg">
+            <img src="{{this.ApiURL}}css/assets/stavyaBackBG.jpg" alt="">
+        </div>
+
+        <div class="blue-section text-black">
+
+            <!-- Instructions -->
+            <div style="font-size:12px; font-weight:600; color:#15679C;">
+                Instructions
+            </div>
+
+            <div style="font-size:10px; line-height:1.4; font-weight: 500;">
+                For security and identification, this card must be worn by the employee while on duty.
+            </div>
+
+            <div style="font-size:10px; margin-top:5px; line-height:1.4; font-weight: 500;">
+                Loss or theft of the card must be reported immediately to the HR department.
+            </div>
+
+            <div style="font-size:10px; margin-top:5px; line-height:1.4; font-weight: 500;">
+                This card is non-transferable and must be surrendered immediately upon the cessation of employment
+            </div>
+
+            <div class="authorizedSignDiv">
+                {{#if this.idCardData.authorizedSignature}}
+                <img class="signatureImage"
+                    src="{{this.ApiURL}}uploads/company/signature/{{this.idCardData.authorizedSignature}}" alt="sign" />
+                {{/if}}
+            </div>
+
+            <!-- Authorised Signatory -->
+            <div class="mt-5" style="font-size:12px; font-weight:600; color:#15679C;">
+                Authorised Signatory
+            </div>
+
+            <div style="width:100%;height:2px;background:#15679C;margin:4px auto;"></div>
+
+
+            <!-- Phone -->
+            <div style="font-size:11px; font-weight:500; color:#15679C;">
+                Phone no. :- <span class="text-black">{{this.idCardData.companyContactNo}}</span>
+            </div>
+
+            <div style="width:100%;height:2px;background:#15679C;margin:4px auto;"></div>
+
+
+            <!-- Address -->
+            <div style="font-size:12px; font-weight:500; color:#15679C;">
+                : Address :
+            </div>
+
+            <div style="font-size:11px; line-height:1.4; min-height: 70px;">
+                <span class="manageAddress"> {{ this.idCardData.companyAddress }} </span>
+            </div>
+
+            <!-- Bottom Logo -->
+            <div class="companyLogo">
+                {{#if this.idCardData.companyLogo}}
+                <div class="text-center d-flex justify-content-center">
+                    <img class="companyLogo"
+                        src="{{this.ApiURL}}uploads/company/logo/{{ this.idCardData.companyLogo }}" />
+                </div>
+                {{/if}}
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

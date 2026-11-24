@@ -1,0 +1,178 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="./bootstrap.css" />
+    <title>Expense Claim Report</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif !important;
+      }
+
+      */ .table {
+        page-break-inside: auto;
+      }
+
+      .table tr {
+        page-break-inside: avoid;
+      }
+
+      .table td {
+        page-break-inside: avoid;
+      }
+
+      tr {
+        page-break-inside: avoid !important;
+      }
+
+      th {
+        font-size: 10px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        text-wrap: wrap;
+        white-space: wrap;
+        line-height: 10px;
+      }
+
+      td {
+        padding-top: 2px;
+        padding-bottom: 2px;
+        font-size: 10px;
+        text-wrap: wrap;
+        white-space: wrap;
+      }
+
+      .ml20 {
+        margin-left: 20px !important;
+      }
+
+      .d-flex {
+        display: flex !important;
+      }
+
+      .vertical-text {
+        writing-mode: vertical-lr;
+      }
+
+      @media print {
+        @page {
+          margin: 15px 15px !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <table style="width: 100%; border: hidden" border="0">
+      <td style="display: flex; justify-content: center; align-items: center">
+        {{#if companyLogo}}
+        <img
+          style="
+            object-fit: cover;
+            width: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+          "
+          src="{{ApiURL}}uploads/company/logo/{{ companyLogo }}"
+        />
+        {{else}}
+        <div
+          style="
+            width: auto;
+            object-fit: contain;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+          "
+        ></div>
+
+        {{/if}}
+      </td>
+      <td>
+        <div><span style="font-size: 18px">{{companyName}}</span></div>
+        <div><span style="font-size: 12px">{{companyAddress}}</span></div>
+      </td>
+    </table>
+
+    <div style="text-align: center; font-size: 22px; margin: 8px !important">
+      Expense Claim Report
+    </div>
+    <div style="margin-bottom: 20px">
+      <table
+        border="1"
+        style="
+          width: 100%;
+          border-collapse: collapse;
+          border: 1px solid rgb(189, 189, 189);
+        "
+      >
+        <thead>
+          <tr>
+            <th>Employee Code</th>
+            <th>Employee Name</th>
+
+            <th>Branch</th>
+            <th>Department</th>
+            <th>Division</th>
+            <th>Working Area</th>
+            <th>Expense Date</th>
+            <th>Expense Purpose</th>
+            <th>Expense Category</th>
+            <th>Expense Head</th>
+            <th>Policy Type</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Check-in Date</th>
+            <th>Check-out Date</th>
+            <th>Total Days</th>
+            <th>Transportation</th>
+            <th>Expense Amount</th>
+            <th>Expense Description</th>
+            <th>Expense Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#each rows}}
+          <tr
+            style="
+              text-align: center;
+              line-height: 10px;
+              border: 1px solid rgb(189, 189, 189);
+              min-height: 30px;
+            "
+          >
+            <td>{{employeeCode}}</td>
+            <td>
+              {{employeeName}} <br />
+              {{designation}}<br />{{employeeNo}}
+            </td>
+            <td>{{branch}}</td>
+            <td>{{department}}</td>
+            <td>{{Division}}</td>
+            <td>{{WorkingArea}}</td>
+            <td>{{expenseDate}}</td>
+            <td>{{expensePurpose}}</td>
+            <td>{{expenseCategory}}</td>
+            <td>{{expenseHead}}</td>
+            <td>{{policyType}}</td>
+            <td>{{city}}</td>
+            <td>{{state}}</td>
+            <td>{{checkInDate}}</td>
+            <td>{{checkOutDate}}</td>
+            <td>{{totalDays}}</td>
+            <td>{{transportation}}</td>
+            <td>{{amount}}</td>
+            <td>{{description}}</td>
+           <td>{{status}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+
+    <script src="./bootstrap.js"></script>
+    <script src="./jquery.js"></script>
+    <script src="./popper.js"></script>
+  </body>
+</html>

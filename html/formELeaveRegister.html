@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Form E Leave Register</title>
+
+  <style>
+    @page {
+      size: A4 landscape;
+      margin: 6mm;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 7px;
+      margin: 0;
+      color: #000;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    thead {
+      display: table-header-group;
+    }
+
+    tr {
+      page-break-inside: avoid;
+    }
+
+    th,
+    td {
+      border: 1px solid #000;
+      padding: 2px;
+      text-align: center;
+      vertical-align: middle;
+      word-break: break-word;
+    }
+
+    th {
+      font-weight: bold;
+    }
+
+    .header-main {
+      background-color: #daeef3;
+    }
+
+    .header-sub {
+      background-color: #ebf1de;
+    }
+
+    .group-odd {
+      background-color: #e7e7e7;
+    }
+
+    .group-even {
+      background-color: #ffffff;
+    }
+
+    .sr-col {
+      width: 28px;
+    }
+
+    .name-col {
+      width: 90px;
+      text-align: left;
+    }
+
+    .days-col {
+      width: 65px;
+    }
+
+    .balance-col {
+      width: 38px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <div class="title">FORM E - LEAVE REGISTER</div>/ -->
+
+<table>
+  <thead>
+
+    <!-- Row 1 -->
+    <tr>
+      <th colspan="{{datalength}}" style="font-size:14px;padding:6px;">
+        FORM E - LEAVE REGISTER
+      </th>
+    </tr>
+
+    <!-- Row 2 -->
+    <tr>
+      <th colspan="{{datalength}}" style="text-align:left;padding:5px;">
+        <b>Name of Establishment :</b> {{companyName}}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <b>Owner Name :</b> {{ownerName}}
+      </th>
+    </tr>
+
+    <!-- Row 3 -->
+    <tr>
+      <th colspan="{{datalength}}" style="padding:5px;">
+        <b>For the period from</b> {{startMonth}}
+        <b>to</b> {{endMonth}}
+      </th>
+    </tr>
+
+    <!-- Existing Header -->
+    <tr>
+      <th rowspan="2" class="header-main sr-col">Sr. No</th>
+      <th rowspan="2" class="header-main name-col">Employee Name</th>
+      <th rowspan="2" class="header-main days-col">
+        No. Of Days Worked In the Year
+      </th>
+
+      {{#each leaveHeader}}
+      <th colspan="7" class="header-main">{{this}}</th>
+      {{/each}}
+    </tr>
+
+    <tr>
+      {{#each leaveHeader}}
+      <th class="header-sub">Opening</th>
+      <th class="header-sub">Added</th>
+      <th class="header-sub">Used</th>
+      <th class="header-sub">Lapsed</th>
+      <th class="header-sub">Encashed</th>
+      <th class="header-sub">Expired</th>
+      <th class="header-sub">Closing</th>
+      {{/each}}
+    </tr>
+
+  </thead>
+
+  <tbody>
+    {{#each userData}}
+    <tr>
+      <td>{{srNo}}</td>
+      <td class="name-col">{{employeeName}}</td>
+      <td>{{attendancePresentDays}}</td>
+
+      {{#each leaveData}}
+      <td class="{{groupClass}}">{{opening}}</td>
+      <td class="{{groupClass}}">{{added}}</td>
+      <td class="{{groupClass}}">{{used}}</td>
+      <td class="{{groupClass}}">{{lapsed}}</td>
+      <td class="{{groupClass}}">{{encashed}}</td>
+      <td class="{{groupClass}}">{{expired}}</td>
+      <td class="{{groupClass}}">{{closing}}</td>
+      {{/each}}
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+</body>
+
+</html>

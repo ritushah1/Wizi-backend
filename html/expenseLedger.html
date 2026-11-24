@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ledgerTitle}}</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .container {
+      padding: 10px;
+    }
+
+    .d-flex {
+      display: flex !important;
+    }
+
+    .justify-content-between {
+      justify-content: space-between;
+    }
+
+    .fs12 {
+      font-size: 12px;
+    }
+
+    .fs14 {
+      font-size: 14px;
+    }
+
+    .m-0 {
+      margin: 0px;
+    }
+
+    .pl-5 {
+      padding-left: 5px !important;
+    }
+
+    .mt-5 {
+      margin-top: 5px;
+    }
+
+    .mt-10 {
+      margin-top: 10px;
+    }
+
+    .p-10 {
+      padding: 10px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .headerDetails {
+      width: 50%;
+    }
+
+    .headerDetails th {
+      width: 21%;
+      text-align: left;
+      font-size: 12px;
+      padding: 2px;
+    }
+
+    .headerDetails td {
+      font-size: 12px;
+      padding: 2px;
+    }
+
+    .dataRows th {
+      font-size: 14px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      padding-bottom: 2px;
+    }
+
+    .dataRows td {
+      font-size: 12px;
+      padding: 3px 4px;
+    }
+
+    .dataRows tr:nth-child(even) {
+      background: #f9fafb;
+    }
+
+    .dataRowsFooter {
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .dataRowsFooter td {
+      border: none !important;
+      background: white;
+    }
+
+    p {
+      margin: 0px;
+    }
+
+    .text-right {
+      text-align: right !important;
+    }
+
+    .text-center {
+      text-align: center !important;
+    }
+
+    .b-none>td {
+      border: none !important;
+    }
+
+    @page {
+      padding-block: 20px;
+    }
+
+    .openingBalance {
+      padding-inline: 5px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      margin-bottom: 5px;
+    }
+
+    .text-wrap {
+      text-wrap: wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="d-flex p-10">
+      <table class="headerDetails">
+        <tr>
+          <th>Name</th>
+          <td>:</td>
+          <td>{{displayName}}
+            {{#if employeeCode}}
+            <span>({{employeeCode}})</span>
+            {{/if}}
+          </td>
+        </tr>
+        <tr>
+          <th>Company</th>
+          <td>:</td>
+          <td>{{companyName}}</td>
+        </tr>
+        <tr>
+          <th>Department</th>
+          <td>:</td>
+          <td>{{department}}</td>
+        </tr>
+        <tr>
+          <th>Division</th>
+          <td>:</td>
+          <td>{{division}}</td>
+        </tr>
+      </table>
+      <table class="headerDetails">
+        <tr>
+          <th>Number</th>
+          <td>:</td>
+          <td>{{userNumber}}</td>
+        </tr>
+        <tr>
+          <th>Branch</th>
+          <td>:</td>
+          <td>{{branch}}</td>
+        </tr>
+        <tr>
+          <th>Designation</th>
+          <td>:</td>
+          <td>{{designation}}</td>
+        </tr>
+        <tr>
+          <th>Working Area</th>
+          <td>:</td>
+          <td>{{workingArea}}</td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h3 class="text-center">{{ledgerHeading}}</h3>
+      <p class="fs12 text-center mt-5">From: {{fromDate}} to {{toDate}}</p>
+    </div>
+    <div class="mt-10">
+      <div class="d-flex justify-content-between openingBalance">
+        <p class="fs14"><b>Opening Balance</b></p>
+        <p class="fs14"><b>{{openingBalance}} {{totalOpeningBalanceType}}</b></p>
+      </div>
+      <table>
+        <thead class="dataRows">
+          <tr>
+            <th style="width: 15%;">Date</th>
+            <th>Description</th>
+            <th>Payment Type</th>
+            <th style="width: 10%;">Debit</th>
+            <th style="width: 10%;">Credit</th>
+            <th style="width: 15%;">Closing Balance</th>
+          </tr>
+        </thead>
+        <tbody class="dataRows">
+          {{#each transactions}}
+          <tr>
+            <td class="text-center">{{date}}</td>
+            <td>
+              <p class="text-wrap">{{description}}</p>
+            </td>
+            <td>
+              <p class="text-wrap">{{paymentType}}</p>
+            </td>
+            <td class="text-right">{{debit}}</td>
+            <td class="text-right">{{credit}}</td>
+            <td class="text-right">{{closingBalance}} {{closingBalanceType}}</td>
+          </tr>
+          {{/each}}
+          <tr class="dataRowsFooter">
+            <td class="fs14 pl-5" colspan="3"><b>Closing Balance</b></td>
+            <td class="text-right fs14"><b>{{totalDebit}}</b></td>
+            <td class="text-right fs14"><b>{{totalCredit}}</b></td>
+            <td class="text-right fs14"><b>{{totalClosingBalance}} {{totalClosingBalanceType}}</b></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>

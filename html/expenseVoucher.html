@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voucher</title>
+    <style>
+        .container {
+            margin: auto;
+            max-width: 800px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .footer .d-flex p {
+            width: 100%;
+        }
+
+        .border-bottom {
+            border-bottom: 1px solid black;
+        }
+
+        .w-50 {
+            width: 50%;
+        }
+
+        .mt-20 {
+            margin-top: 20px;
+        }
+
+        .m-0 {
+            margin: 0;
+        }
+
+        .text-nowrap {
+            white-space: nowrap !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="6">{{companyName}}</th>
+                    </tr>
+                    {{#if companyAddress}}
+                    <tr>
+                        <td colspan="6" class="text-center">{{companyAddress}}</td>
+                    </tr>
+                    {{/if}}
+                    <tr>
+                        <td colspan="6"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" class="pl-5"><b>Employee Re-imbursement Voucher No.: &nbsp;{{userExpenseID}}</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" class="p-1"></td>
+                    </tr>
+                    <tr>
+                        <td class="pl-5"><b>Project ID:</b></td>
+                        <td colspan="2">{{projectID}}</td>
+                        <td class="pl-5"><b>Employee Name: </b></td>
+                        <td colspan="2">{{employeeName}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" class="p-1"></td>
+                    </tr>
+                    <tr>
+                        <td class="pl-5"><b>Request Date :</b></td>
+                        <td colspan="2">{{expenseRequestDate}}</td>
+                        <td class="pl-5"><b>Employee Code: </b></td>
+                        <td colspan="2">{{employeeCode}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" class="p-1"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"></td>
+                        <td class="pl-5"><b>Approval Date: </b></td>
+                        <td colspan="2">{{approvalDate}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" class="p-1"></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>
+                                    Sr No.
+                                </th>
+                                <th>
+                                    Date of Expense
+                                </th>
+                                <th>
+                                    Expense Category
+                                </th>
+                                <th>
+                                    Expense Head
+                                </th>
+                                <th>
+                                    Description
+                                </th>
+                                <th>
+                                    Total Amount (&#8377;)
+                                </th>
+                            </tr>
+                            {{#each expenseData}}
+                            <tr>
+                                <td class="text-center">{{this.index}}</td>
+                                <td class="text-center">{{this.expenseDate}}</td>
+                                <td class="text-center">{{this.expenseCategory}}</td>
+                                <td class="text-center">{{this.expenseHead}}</td>
+                                <td class="text-center">{{this.description}}</td>
+                                <td class="text-right">{{this.expenseAmount}}</td>
+                            </tr>
+                            {{/each}}
+                            <tr>
+                                <th colspan="5">
+                                    Total
+                                </th>
+                                <td class="text-right">
+                                    {{totalExpenseAmount}}
+                                </td>
+                            </tr>
+                            <!-- <tr>
+                                <td colspan="5"></td>
+                            </tr> -->
+                        </thead>
+                    </table>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-20">
+            <div class="d-flex">
+                <table style="width: fit-content; width: 50%;" class="text-nowrap">
+                    <tr>
+                        <td class="w-50 pl-5"><b>Total Claimed Amount: </b></td>
+                        <td>&#8377; {{totalExpenseAmount}}</td>
+                    </tr>
+                    <tr>
+                        <td class="w-50 pl-5"><b>Advance Adjusted:</b></td>
+                        <td>&#8377;</td>
+                    </tr>
+                    <tr>
+                        <td class="w-50 pl-5"><b>Total Approved Amount: </b></td>
+                        <td>&#8377;</td>
+                    </tr>
+                </table>
+                <div style="display: flex; align-items: end; width: 50%;">
+                    <p class="m-0 border-bottom" style="vertical-align: bottom; width: 100%; padding-left: 5px;">
+                        <b>Signature</b>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-20">
+            <p class="m-0 pl-5"><b>Approval History</b></p>
+            <div>
+                <table>
+                    <tr>
+                        <td class="text-center"><b>SrNo.</b></td>
+                        <td class="text-center"><b>Approval Date</b></td>
+                        <td class="text-center"><b>Approved by</b></td>
+                        <td class="text-center"><b>Designation</b></td>
+                        <td class="text-center"><b>Remarks</b></td>
+                    </tr>
+                    {{#each expenseData}}
+                    <tr>
+                        <td class="text-center">{{this.index}}</td>
+
+                        <td class="text-center">
+                            {{#each this.approvalDateArray}}
+                            {{this}}<br>
+                            {{/each}}
+                        </td>
+
+                        <td class="text-center">
+                            {{#each this.approvalByArray}}
+                            {{this}}<br>
+                            {{/each}}
+                        </td>
+
+                        <td class="text-center">
+                            {{#each this.approvalByDesignationArray}}
+                            {{this}}<br>
+                            {{/each}}
+                        </td>
+
+                        <td class="text-center">
+                            {{#each this.approvalRemarksArray}}
+                            {{this}}<br>
+                            {{/each}}
+                        </td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

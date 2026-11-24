@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Form-D Annual Return - Bonus Paid</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 10px;
+      font-size: 8px;
+      color: #000;
+    }
+
+    @page {
+      size: A4 landscape;
+      margin: 10mm;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .title {
+      font-size: 11px;
+      font-weight: bold;
+      line-height: 16px;
+    }
+
+    .subtitle {
+      font-size: 10px;
+      font-weight: bold;
+      line-height: 15px;
+    }
+
+    .space {
+      height: 18px;
+    }
+
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 15px;
+    }
+
+    .info-table td {
+      border: none;
+      padding: 3px 0;
+      font-size: 8px;
+      line-height: 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    th,
+    td {
+      border: 1px solid #000;
+      padding: 4px;
+      font-size: 8px;
+      text-align: center;
+      vertical-align: middle;
+      word-break: break-word;
+    }
+
+    th {
+      font-weight: bold;
+    }
+
+    .column-row th {
+      font-weight: normal;
+    }
+
+    .blank-row td {
+      height: 24px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="center title">PAYMENT OF BONUS ACT</div>
+  <div class="center title">FORM - D</div>
+  <div class="center subtitle">[See Rule 5]</div>
+  <div class="space"></div>
+  <div class="center title">
+    ANNUAL RETURN - BONUS PAID TO EMPLOYEES FOR THE ACCOUNTING YEAR
+  </div>
+  <div class="center subtitle">ENDING ON {{endDate}}</div>
+  <br />
+  <table class="info-table">
+    <tr>
+      <td>
+        <table style="width:100%; border:none; border-collapse:collapse;">
+          <tr>
+            <td style="width:25px; border:none; text-align:left; vertical-align:top;">1.</td>
+            <td style="border:none; text-align:left;">
+              <b>Name of the Establishment and its Complete Postal Address :</b>
+              {{companyName}}<br />
+              {{companyAddress}}
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <table style="width:100%; border:none; border-collapse:collapse;">
+          <tr>
+            <td style="width:25px; border:none; text-align:left; vertical-align:top;">2.</td>
+            <td style="border:none; text-align:left;">
+              <b>Name of Industry :</b>
+              {{companyTypename}}
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <table style="width:100%; border:none; border-collapse:collapse;">
+          <tr>
+            <td style="width:25px; border:none; text-align:left; vertical-align:top;">3.</td>
+            <td style="border:none; text-align:left;">
+              <b>Name of the Employer :</b>
+              {{ownerName}}
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <table style="width:100%; border:none; border-collapse:collapse;">
+          <tr>
+            <td style="width:25px; border:none; text-align:left; vertical-align:top;">4.</td>
+            <td style="border:none; text-align:left;">
+              <b>Total Number of Employees :</b>
+              {{totalUsers}} Employees
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <table style="width:100%; border:none; border-collapse:collapse;">
+          <tr>
+            <td style="width:25px; border:none; text-align:left; vertical-align:top;">5.</td>
+            <td style="border:none; text-align:left;">
+              <b>Number of Employees Benefited by Bonus Payments :</b>
+              {{totalUsers}} Employees
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <table style="width:100%; border:none; border-collapse:collapse;">
+          <tr>
+            <td style="width:25px; border:none; text-align:left; vertical-align:top;">6.</td>
+            <td style="border:none; text-align:left;">
+              <b>Site :</b>
+              
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>Total Amount Payable as <br> bonus under Section 10 or 11 <br> of the payment of Bonus Act,<br>1965 as the
+          case may be</th>
+        <th>Settlement, if any reached under <br> Section 18(1) or 12(3) of the <br>Industrial Disputes Act. 1947
+          <br>with date
+        </th>
+        <th>Percentage of <br>bonus declared <br> to be paid</th>
+        <th>Total amount <br> of bonus <br> actually paid</th>
+        <th>Date <br> Which <br> Payment <br> Made</th>
+        <th>Whether bonus <br> has been paid to <br> all the <br> employeess, if <br> not reasons for <br> non-payment
+        </th>
+        <th>Remarks</th>
+      </tr>
+      <tr class="column-row">
+        <th>(1)</th>
+        <th>(2)</th>
+        <th>(3)</th>
+        <th>(4)</th>
+        <th>(5)</th>
+        <th>(6)</th>
+        <th>(7)</th>
+      </tr>
+      <tr class="blank-row">
+        <td>SECTION 10</td>
+        <td>-</td>
+        <td>8.33%</td>
+        <td>{{totalBonusAmount}}/-</td>
+        <td>{{paymentType}}</td>
+        <td>YES</td>
+        <td>&nbsp;</td>
+      </tr>
+    </thead>
+  </table>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+
+  <div style="width:100%; text-align:right; font-size:9px; font-weight:bold;">
+    Signature of the Employer or his Agent
+  </div>
+</body>
+
+</html>

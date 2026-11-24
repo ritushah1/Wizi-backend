@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Monarch Enterprises - ID Card</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f5f5f5;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 305px !important;
+            height: 472px !important;
+            position: relative;
+            overflow: hidden !important;
+            border-radius: 5px !important;
+        }
+
+        .rotate180 {
+            transform: rotateY(180deg);
+        }
+
+        .id-card {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 5px;
+            position: relative;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .top-first {
+            position: absolute;
+            top: 0px;
+            left: -25px;
+            height: 10px !important;
+            width: 20% !important;
+            background: #611b16;
+            transform: rotate(135deg);
+            z-index: 5 !important;
+        }
+
+        .top-second {
+            position: absolute;
+            top: -5px;
+            left: -50px;
+            height: 40px !important;
+            width: 50% !important;
+            background: #8f2822;
+            transform: rotate(135deg);
+            z-index: 4 !important;
+        }
+
+        .top-third {
+            position: absolute;
+            top: 8px;
+            left: -50px;
+            height: 40px !important;
+            width: 50% !important;
+            background: #d12624;
+            transform: rotate(135deg);
+            z-index: 3 !important;
+        }
+
+        .top-fourth {
+            position: absolute;
+            top: 7px;
+            left: 69px;
+            height: 5px !important;
+            width: 14% !important;
+            background: #63201b;
+            transform: rotate(135deg);
+            z-index: 3 !important;
+            overflow: hidden;
+            border-top-right-radius: 100px;
+            border-bottom-right-radius: 100px;
+        }
+
+        .top-fifth {
+            position: absolute;
+            top: 15px;
+            left: 28px;
+            height: 5px !important;
+            width: 48% !important;
+            background: #cc2c21;
+            transform: rotate(135deg);
+            z-index: 3 !important;
+            overflow: hidden;
+            border-top-right-radius: 100px;
+            border-bottom-right-radius: 100px;
+        }
+
+
+        .bottom-first {
+            position: absolute;
+            bottom: 0px;
+            right: -25px;
+            height: 15px !important;
+            width: 20% !important;
+            background: #611b16;
+            transform: rotate(135deg);
+            z-index: 5 !important;
+        }
+
+        .bottom-second {
+            position: absolute;
+            bottom: -5px;
+            right: -50px;
+            height: 12px !important;
+            width: 50% !important;
+            background: #d12624;
+            transform: rotate(135deg);
+            z-index: 4 !important;
+        }
+
+        .bottom-third {
+            position: absolute;
+            bottom: 0px;
+            right: 32px;
+            height: 4px !important;
+            width: 7% !important;
+            background: #63201b;
+            transform: rotate(135deg);
+            z-index: 3 !important;
+            overflow: hidden;
+            border-bottom-left-radius: 100px;
+            border-top-left-radius: 100px;
+        }
+
+        .bottom-fourth {
+            position: absolute;
+            bottom: 10px;
+            right: 14px;
+            height: 4px !important;
+            width: 20% !important;
+            background: #cc2c21;
+            transform: rotate(135deg);
+            z-index: 3 !important;
+            overflow: hidden;
+            border-bottom-left-radius: 100px;
+            border-top-left-radius: 100px;
+        }
+
+        .companyLogoDiv {
+            position: relative;
+            height: 60px;
+            width: 60px;
+        }
+
+        .companyLogo {
+            height: 60px;
+            width: 60px;
+        }
+
+        .companyName {
+            max-width: 150px;
+            margin-top: 5px;
+            text-align: center;
+            line-height: 0.95 !important;
+            color: #522018;
+            font-weight: bolder;
+            z-index: 10 !important;
+        }
+
+        .profileImageDiv {
+            position: relative;
+            margin-top: 27px;
+            width: 128px;
+            height: 161px;
+        }
+
+        .profileImage {
+            height: 160px;
+            width: 128px;
+            object-fit: contain;
+        }
+
+        .employeeName {
+            margin-top: 16px;
+            font-size: 1.15rem;
+            font-weight: bolder;
+            color: #8c2420;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .designation {
+            margin-top: 12px;
+            font-size: 0.875rem;
+            font-weight: bolder;
+            color: #383838;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .mobile {
+            margin-top: 22px;
+            font-size: 0.875rem;
+            font-weight: bolder;
+            color: #383838;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .email {
+            margin-top: 22px;
+            font-size: 0.6rem;
+            font-weight: bolder;
+            color: #383838;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .websiteBack {
+            margin-top: 5px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            font-family: "Montserrat", sans-serif;
+            color: #7e3238;
+        }
+
+        .websiteFront {
+            margin-top: 8px;
+            font-size: 0.85rem;
+            font-weight: bolder;
+            color: #7e3238;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .aadharNumber {
+            font-size: 11px;
+        }
+
+        .bloodGroup {
+            margin-top: 10px;
+            font-size: 12px;
+        }
+
+        .emergencyContact {
+            margin-top: 10px;
+            font-size: 12px;
+        }
+
+        .authorizedSignatureDiv {
+            font-size: 0.7rem;
+        }
+
+        .authorizedSignatureDiv .signText {
+            margin-top: 23px;
+        }
+
+        .authorizedSignature {
+            margin-left: 14px;
+            margin-top: 8px;
+            background-size: cover;
+            height: 75px;
+            width: auto;
+        }
+
+        .dotted-border-bottom {
+            margin-top: 12px;
+            margin-left: 5px;
+            border: none;
+            height: 1px;
+            background-image: repeating-linear-gradient(to right,
+                    black 0,
+                    black 3px,
+                    /* length of dash */
+                    transparent 3px,
+                    transparent 12px
+                    /* space between dashes */
+                );
+        }
+
+        ul {
+            padding: 0px;
+            margin: 0px;
+            margin-top: 10px;
+            padding-left: 15px;
+        }
+
+        ul>li {
+            font-size: 0.875rem;
+            line-height: 20px;
+        }
+
+        .address {
+            margin-top: 10px;
+            font-size: 0.65rem;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            line-clamp: 4;
+            -webkit-box-orient: vertical;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .mt-10 {
+            margin-top: 10px;
+        }
+
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                /* Chrome/Safari */
+                print-color-adjust: exact !important;
+                /* Firefox */
+            }
+
+            @page {
+                margin: 0px 0px !important;
+            }
+        }
+
+        .ml-40 {
+            margin-left: 40px;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="top-first"></div>
+        <div class="top-second"></div>
+        <div class="top-third"></div>
+        <div class="top-fourth"></div>
+        <div class="top-fifth"></div>
+
+        <div class="id-card ">
+            <div class="flex ml-40">
+                <div class="companyLogoDiv"></div>
+                <div>
+                    {{#if this.idCardData.companyLogo}}
+                    <img class="companyLogo" src="{{ this.ApiURL }}uploads/company/logo/{{this.idCardData.companyLogo}}"
+                        alt="Company Logo" />
+                    {{/if}}
+                </div>
+            </div>
+            <div class="flex justify-center">
+                <div class="companyName">{{this.idCardData.companyName}}</div>
+            </div>
+            <div class="flex justify-center">
+                <div class="profileImageDiv">
+                    <img class="profileImage" src="{{this.ApiURL}}uploads/user/photo/{{ this.idCardData.userPhoto }}"
+                        alt="" />
+                </div>
+            </div>
+            <div class="flex justify-center">
+                <div class="employeeName">{{displayName}}</div>
+            </div>
+            <div class="flex justify-center">
+                <div class="designation">{{this.idCardData.designationName}}</div>
+            </div>
+            <div class="flex justify-center">
+                <div class="mobile">{{this.idCardData.userNumber}}</div>
+            </div>
+            <!-- <div class="flex justify-center">
+                <div class="email">E-mail: {{this.idCardData.companyEmail}}</div>
+            </div> -->
+            <div class="flex justify-center">
+                <div class="websiteFront">{{this.idCardData.companyWebsite}}</div>
+            </div>
+
+
+        </div>
+
+        <div class="bottom-first"></div>
+        <div class="bottom-second"></div>
+        <div class="bottom-third"></div>
+        <div class="bottom-fourth"></div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="container rotate180 mt-10">
+        <div class="top-first"></div>
+        <div class="top-second"></div>
+        <div class="top-third"></div>
+        <div class="top-fourth"></div>
+        <div class="top-fifth"></div>
+
+        <div class="id-card rotate180">
+            <div class="aadharNumber">Aadhar Number: {{this.idCardData.userAdharCardNumber}}</div>
+            <div class="bloodGroup">Blood Group: {{this.idCardData.bloodgroup}}</div>
+            <div class="emergencyContact">Emergency Contact: {{this.idCardData.otherContactNumber}}</div>
+            <div class="flex authorizedSignatureDiv">
+                <div class="signText">Authorized Signature: </div>
+                <div class="authorizedSignature"></div>
+                <div class="authorizedSignatureDiv">
+                    {{#if this.idCardData.authorizedSignature}}
+                    <img class="authorizedSignature"
+                        src="{{this.ApiURL}}uploads/company/signature/{{this.idCardData.authorizedSignature}}" alt="" />
+                    {{/if}}
+                </div>
+            </div>
+            <div class="dotted-border-bottom"></div>
+            <ul>
+                <li>
+                    ID Card should be carried at all times while on duty and should be produced on demand
+                </li>
+                <li style="margin-top: 7px;">
+                    If ID Card is lost, the same should be intimated to TME manager
+                </li>
+                <li style="margin-top: 7px;">
+                    Please surrender this card to TME manager on cessation of services or transfer out of location
+                </li>
+            </ul>
+            <div class="dotted-border-bottom"></div>
+            <div class="address">
+                {{this.idCardData.companyAddress}}
+            </div>
+            <div class="flex justify-center">
+                <div class="websiteBack">{{this.idCardData.companyWebsite}}</div>
+            </div>
+
+
+        </div>
+
+        <div class="bottom-first"></div>
+        <div class="bottom-second"></div>
+        <div class="bottom-third"></div>
+        <div class="bottom-fourth"></div>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form 2 (Revised)</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+      }
+      .container {
+        padding: 30px 20px;
+      }
+      .header h3,
+      .header p {
+        text-align: center;
+        text-transform: uppercase;
+      }
+      .header .heading {
+        margin: 10px 0px;
+        font-weight: 600;
+        font-size: 13px;
+      }
+      .smaller {
+        font-size: 10px;
+        font-weight: 600;
+        margin: 10px 0px;
+      }
+
+      p {
+        font-size: 11px;
+        margin: 20px 0px;
+      }
+
+      .no-side-border {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 12px 0px;
+      }
+
+      .no-side-border th,
+      .no-side-border td {
+        padding: 5px;
+        text-align: left;
+        font-size: 11px;
+      }
+
+      .no-side-border :nth-child(1) {
+        width: 25%;
+        height: 26px;
+      }
+
+      .partAHeading,
+      .partBHeading {
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .side-border {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 12px 0px;
+      }
+
+      .side-border th,
+      .side-border td {
+        border: 1px solid black;
+        padding: 5px;
+        text-align: left;
+        font-size: 11px;
+      }
+
+      .signFlex {
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h3>Form 2 (Revised)</h3>
+        <div>
+          <p class="heading">Nomination and Declaration form</p>
+          <p class="heading">for Unexempted/Exempted Establishments</p>
+        </div>
+
+        <p class="smaller" style="text-transform: none;">
+          Declaration and Nomination Form under the Employees’ Provident Funds
+          and Employees’ Pension Scheme
+        </p>
+        <p style="text-transform: none;">
+          (Paragraphs 33 & 61(1) of the Employees Provident Fund Scheme, 1952
+          and Paragraph 18 of the Employees’ Pension Scheme, 1995)
+        </p>
+      </div>
+
+      <div class="content">
+        <table class="no-side-border">
+          <tr>
+            <td>1. Name (In Block Letters)</td>
+            <td>:</td>
+            <td style="text-transform: uppercase">{{name}}</td>
+          </tr>
+
+          <tr>
+            <td>2. Father’s/ Husband’s Name</td>
+            <td>:</td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td>3. Date of Birth</td>
+            <td>:</td>
+            <td>{{dob}}</td>
+          </tr>
+
+          <tr>
+            <td>4. Sex</td>
+            <td>:</td>
+            <td>{{gender}}</td>
+          </tr>
+
+          <tr>
+            <td>5. Marital Status</td>
+            <td>:</td>
+            <td>{{maratialStatus}}</td>
+          </tr>
+
+          <tr>
+            <td>6. Account No.</td>
+            <td>:</td>
+            <td></td>
+          </tr>
+
+          <!-- Permanent Address -->
+          <tr>
+            <td>7. Address</td>
+            <td>:</td>
+            <td>
+              Permanent : {{permanentAddressHouseNumber}}
+              {{permanentAddressLandmark}} &nbsp; {{permanentAddressArea}}
+              &nbsp; {{permanentAddressCity}}&nbsp;{{zipcode}}
+              {{permanentAddressState}} {{permanentAddressCountry}}
+            </td>
+          </tr>
+
+          <!-- Temporary Address -->
+          <tr>
+            <td></td>
+            <td>:</td>
+            <td>
+              Temporary : {{temporaryAddressHouseNumber}}
+              {{temporaryAddressLandmark}} &nbsp; {{temporaryAddressArea}}
+              &nbsp;
+              {{temporaryAddressCity}}&nbsp;{{temporaryAddressLandmarkzipcode}}
+              {{temporaryAddressState}} {{temporaryAddressCountry}}
+            </td>
+          </tr>
+
+          <!-- Date of Joining EPF -->
+          <tr>
+            <td>5. Date of Joining</td>
+            <td>:</td>
+            <td>EPF &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</td>
+          </tr>
+
+          <!-- Date of Joining EPS -->
+          <tr>
+            <td></td>
+            <td>:</td>
+            <td>EPS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</td>
+          </tr>
+        </table>
+
+        <div class="partA">
+          <div class="partAHeading">PART - A (EPF)</div>
+          <p>
+            I hereby nominate the person(s)/ cancel the nomination made by me
+            previously and nominate the person(s) mentioned below to receive the
+            amount standing to my credit in the Employees’ Provident Fund in
+            the event of my death.
+          </p>
+
+          <table class="side-border">
+            <tr>
+              <td style="width: 20%">Name & Address of the nominee/nominees</td>
+              <td style="width: 20%">Nominee's relationship with the member</td>
+              <td style="width: 10%">Date of Birth</td>
+              <td style="width: 20%">
+                Total amount of share of Accumulations in Provident Fund to be
+                paid to each nominee
+              </td>
+              <td style="width: 30%">
+                If the nominee is a minor, name & relationship & address of the
+                guardian who may receive the amount during the minority of
+                nominee
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: center">1</td>
+              <td style="text-align: center">2</td>
+              <td style="text-align: center">3</td>
+              <td style="text-align: center">4</td>
+              <td style="text-align: center">5</td>
+            </tr>
+            <tr style="height: 160px">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+
+          <div style="padding: 0px 7%">
+            <p>
+              1 *Certified that I have no Family as defined in para 2(g) of the
+              Employees’ Provident Fund Scheme, 1952 and should I acquire a
+              family hereafter the above nomination should be deemed as
+              cancelled.
+            </p>
+            <p>2 *Certified that my father/mother is/are dependent upon me.</p>
+          </div>
+
+          <div class="signFlex" style="min-height: 140px">
+            <div>
+              <p>*Strike out whichever is not applicable</p>
+            </div>
+            <div>
+              <b> <p>Signature or thumb impression of the subscriber</p></b>
+            </div>
+          </div>
+        </div>
+
+        <div class="partB">
+          <div class="partBHeading">Part B (EPS) (Para 18)</div>
+
+          <p>
+            I hereby furnish below particulars of the members of my family who
+            would be eligible to receive widow/children pension in the event of
+            my death.
+          </p>
+
+          <table class="side-border">
+            <tr>
+              <td style="text-align: center; width: 5%">S.No.</td>
+              <td style="text-align: center; width: 20%">
+                Name of the family members
+              </td>
+              <td style="text-align: center; width: 40%">Address</td>
+              <td style="text-align: center">Date of Birth</td>
+              <td style="text-align: center">Relationship with the member</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">1</td>
+              <td style="text-align: center">2</td>
+              <td style="text-align: center">3</td>
+              <td style="text-align: center">4</td>
+              <td style="text-align: center">5</td>
+            </tr>
+
+            <tr>
+              <td style="text-align: center">2</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td style="text-align: center">3</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td style="text-align: center">4</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td style="text-align: center">5</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+
+          <div>
+            <p>
+              **Certified that I have no family, as defined in para 2(vii) of
+              Employees’ Pension Scheme, 1995 and should I acquire a family
+              hereafter I shall furnish particulars thereon in the above form.
+            </p>
+            <p>
+              I hereby nominate the following person for receiving the monthly
+              widow pension (admissible under para 16 2(a)(i) and (ii) in the
+              event of my death without leaving any eligible family member for
+              receiving pension.
+            </p>
+          </div>
+
+          <table class="side-border" style="width: 80%">
+            <tr>
+              <td style="text-align: center">
+                Name and Address of the Nominee
+              </td>
+              <td style="text-align: center">Date of Birth</td>
+              <td style="text-align: center">Relationship with member</td>
+            </tr>
+            <tr style="height: 200px">
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+
+          <div class="signFlex">
+            <p>Date:</p>
+            <p><b>Signature or thumb impresion of the subscriber</b></p>
+          </div>
+          <div>
+            <p>Place:</p>
+            <p>**Strike out whichever is not applicable</p>
+          </div>
+        </div>
+
+        <div class="partC">
+          <div class="partBHeading">CERTIFICATE BY EMPLOYER</div>
+
+          <div>
+            <p>
+              Certified that the above declaration and nomination has been
+              signed/thumb impressed before me by Shri/Smt./Kum.
+              ___________________________________________ employed in my
+              establishment after he/she has read the entries/entries have been read
+              over to him/her by me and got confirmed by him/her.
+            </p>
+            <div class="signFlex">
+              <p>Place:________________________________</p>
+              <p>
+                <b
+                  >Signature of the employer or other Authorized Officers of the
+                  Establishment</b
+                >
+                <br />
+                <br />
+                <b>Designation</b>
+              </p>
+            </div>
+            <div class="signFlex">
+              <p><b>Dated the</b> :____________________</p>
+              <p>
+                <b
+                  >Name & Address of the Factory / Establishment or Rubber Stamp
+                  Thereon</b
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

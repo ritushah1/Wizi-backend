@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HIRA ID CARD</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+      .poppins-bold {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-style: normal;
+      }
+
+      .poppins-regular {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      * {
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .container2 {
+        position: relative;
+        width: 340px;
+        height: 473px;
+        max-width: 340px !important;
+        max-height: 473px;
+        overflow: hidden;
+        font-family: sans-serif;
+        margin: 18px !important;
+      }
+
+      .content {
+        position: relative;
+        z-index: 10;
+        background: transparent;
+        height: 100%;
+        max-width: 340px;
+        max-height: 473px;
+        overflow: hidden;
+        padding: 18px !important;
+      }
+
+      .background {
+        position: absolute;
+        top: -50px;
+        left: -20px;
+        width: 325px;
+        height: 550px;
+        max-width: 325px;
+        max-height: 473px;
+        overflow: hidden;
+        background: transparent;
+        z-index: -10;
+      }
+
+      .companyLogo {
+        -o-object-fit: content;
+        object-fit: content;
+        background: transparent;
+        border-radius: 15px;
+        width: auto;
+        height: 45px !important;
+        mix-blend-mode: darken;
+      }
+
+      .p-18 {
+        padding: 18px;
+      }
+
+      .profileWrapper {
+        position: relative;
+        width: 190px;
+        height: 190px;
+        border-radius: 50%;
+        margin: auto;
+      }
+
+      .mask,
+      .fill {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+
+      .mask.full {
+        clip: rect(152px, 203px, 200px, 0px);
+        z-index: 1;
+      }
+
+      .mask.full .fill {
+        background-color: #145388;
+        transform: rotate(0deg);
+      }
+
+      .mask.inner {
+        clip: rect(78px, 203px, 200px, 0px);
+        z-index: 1;
+        transform: rotate(18.5deg);
+      }
+
+      .mask.inner .fill {
+        background-color: #145388;
+      }
+
+      .mask.inner-top {
+        clip: rect(85px, 203px, 200px, 0px);
+        z-index: 1;
+        transform: rotate(-161.6deg);
+      }
+
+      .mask.inner-top .fill {
+        background-color: white;
+      }
+
+      .mask.inner-top-profile {
+        clip: rect(95px, 203px, 200px, 0px);
+        z-index: 1;
+        transform: rotate(-164.6deg);
+      }
+
+      .mask.inner-top-profile .fill {
+        background-color: #badce8;
+      }
+
+      .mask.inner-mid-profile {
+        clip: rect(82px, 204px, 96.5px, 0px);
+        z-index: 1;
+        transform: rotate(-165deg);
+      }
+
+      .mask.inner-mid-profile .fill {
+        background-color: #145388;
+      }
+
+      .mask.inner-bottom-profile {
+        clip: rect(74px, 204px, 204px, 0px);
+        z-index: 1;
+        transform: rotate(18deg);
+      }
+
+      .mask.inner-bottom-profile .fill {
+        background-color: white;
+      }
+
+      .profileInnerWrapper {
+        position: absolute;
+        top: 19px;
+        left: 12px;
+        width: 165px;
+        height: 165px;
+        border-radius: 50%;
+        overflow: hidden;
+        /* background: white; */
+        z-index: 2;
+      }
+
+      .profileDiv {
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 161px;
+        height: 161px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: white;
+        z-index: 2;
+      }
+
+      .innerProfileDiv {
+        position: absolute;
+        top: 7px;
+        left: 7px;
+        width: 148px;
+        height: 148px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: white;
+        z-index: 2;
+      }
+
+      .mainProfileDiv {
+        position: absolute;
+        top: 7px;
+        left: 5px;
+        width: 138px;
+        height: 139px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: white;
+        z-index: 2;
+      }
+
+      .profileImage {
+        width: 140px;
+        height: 140px;
+        object-fit: cover;
+      }
+
+      .topBackground {
+        width: 150%;
+        height: 45%;
+        transform: rotateZ(15deg);
+        background: #badce8;
+      }
+
+      .middleBackground {
+        position: absolute;
+        top: -4px;
+        left: -50px;
+        width: 150%;
+        height: 45%;
+        background: #145388;
+        transform: rotateZ(18.5deg);
+        z-index: -9;
+      }
+
+      @media print {
+        * {
+          -webkit-print-color-adjust: exact !important;
+          /* Chrome/Safari */
+          print-color-adjust: exact !important;
+          /* Firefox */
+        }
+
+        body {
+          background: white !important;
+        }
+
+        .container2 {
+          width: 303px !important;
+          max-width: 303px !important;
+        }
+
+        @page {
+          margin: 0px 0px !important;
+        }
+
+        .col-4 {
+          page-break-inside: avoid !important;
+        }
+      }
+
+      .text-center {
+        text-align: center !important;
+      }
+
+      .m-0 {
+        margin: 0px;
+      }
+
+      .employeeName {
+        font-size: 20px;
+        margin-top: 5px;
+      }
+
+      .designation {
+        font-size: 14px;
+        margin-top: 5px;
+      }
+
+      .fs13 {
+        font-size: 13px !important;
+      }
+
+      .mt-15 {
+        margin-top: 16px;
+      }
+
+      .text-red {
+        color: #145388;
+      }
+
+      .text-right {
+        text-align: right;
+      }
+
+      table {
+        border-collapse: collapse;
+      }
+
+      .page-break {
+        page-break-after: always;
+      }
+
+      .mt-15 {
+        margin-top: 15px;
+      }
+
+      .mt-10 {
+        margin-top: 10px;
+      }
+
+      .mt-5px {
+        margin-top: 5px;
+      }
+
+      .mt-7 {
+        margin-top: 7px;
+      }
+
+      .word-space-0 {
+        word-spacing: 0px;
+      }
+
+      .d-flex {
+        display: flex;
+      }
+
+      .justify-content-center {
+        justify-content: center;
+      }
+
+      .justify-content-right {
+        justify-content: right;
+      }
+
+      .align-items-center {
+        align-items: center;
+      }
+
+      .align-items-start {
+        align-items: start;
+      }
+
+      .text-white {
+        color: white !important;
+      }
+
+      .ml-5 {
+        margin-left: 5px;
+      }
+
+      .mt-3 {
+        margin-top: 3px !important;
+      }
+
+      .email {
+        margin-top: 0px;
+      }
+
+      .h-7 {
+        height: 10px;
+      }
+
+      .tableDiv {
+        padding-left: 41px;
+      }
+
+      .profile-pic {
+        height: 140px;
+        width: 140px;
+        border-radius: 15px;
+        -o-object-fit: cover;
+        object-fit: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+        color: #000000;
+        font-size: 32px;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      .white-space-nowrap {
+        white-space: nowrap !important;
+      }
+
+      .ellipsis {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 130px;
+        display: block;
+      }
+
+      .name-ellipsis {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 280px;
+        display: block;
+        margin: auto;
+      }
+
+      .col-4 {
+        position: relative;
+        /* max-width: 33.33%; */
+        page-break-inside: avoid !important;
+      }
+    </style>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="row">
+      {{#each tempData}}
+      <div class="col-4">
+        <div class="container2">
+          <div class="background">
+            <div class="topBackground"></div>
+            <div class="middleBackground"></div>
+          </div>
+
+          <div class="content">
+            <div>
+              {{#if this.idCardData.companyLogo}}
+              <div class="text-center d-flex justify-content-center">
+                <img class="companyLogo" src="{{this.ApiURL}}uploads/company/logo/{{ this.idCardData.companyLogo }}" />
+              </div>
+              {{else}}
+              <div>
+                <div class="companyLogo">
+                  {{#if this.idCardData.companyName}}
+                  <div class="text-center text-white manageAddress">
+                    <span>
+                      <b class="fs12 p10">{{ this.idCardData.companyName }}</b>
+                    </span>
+                  </div>
+                  {{/if}}
+                </div>
+              </div>
+              {{/if}}
+              <div class="profileWrapper">
+                <div class="mask full">
+                  <div class="fill"></div>
+                </div>
+                <div class="profileInnerWrapper">
+                  <div class="mask inner">
+                    <div class="fill"></div>
+                  </div>
+                  <div class="mask inner-top">
+                    <div class="fill"></div>
+                  </div>
+                  <div class="profileDiv">
+                    <div class="mask inner-top-profile">
+                      <div class="fill"></div>
+                    </div>
+                    <div class="mask inner-mid-profile">
+                      <div class="fill"></div>
+                    </div>
+                    <div class="mask inner-bottom-profile">
+                      <div class="fill"></div>
+                    </div>
+                    <div class="innerProfileDiv">
+                      <div class="mainProfileDiv">
+                        {{#if this.idCardData.userPhoto}}
+                        <img class="profileImage" src="{{this.ApiURL}}uploads/user/photo/{{ this.idCardData.userPhoto }}" alt="" />
+                        {{else}}
+                        <div class="profile-pic">
+                          {{this.idCardData.profilePicName}}
+                        </div>
+                        {{/if}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <div>
+                <div class="d-flex justify-content-center">
+                  <p class="poppins-bold text-center m-0 employeeName name-ellipsis">
+                    {{displayName}}
+                  </p>
+                </div>
+                <div class="d-flex justify-content-center">
+                  {{#if this.idCardData.designationName}}
+                  <p class="poppins-regular text-center designation name-ellipsis">
+                    {{this.idCardData.designationName}}
+                  </p>
+                  {{else}}
+                  <p class="poppins-regular text-center designation name-ellipsis">
+                    &nbsp;
+                  </p>
+                  {{/if}}
+                  </p>
+                </div>
+                <div class="d-flex tableDiv">
+                  <table class="mt-5px">
+                    <tr>
+                      <td>
+                        <p class="text-red m-0 white-space-nowrap fs13 text-right">
+                          Date Of Joining :
+                        </p>
+                      </td>
+                      <td>
+                        <p class="m-0 fs13 ellipsis white-space-nowrap">
+                          &nbsp;&nbsp;{{this.idCardData.joiningDate}}
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p class="text-red m-0 white-space-nowrap fs13 text-right">
+                          Branch :
+                        </p>
+                      </td>
+                      <td>
+                        <p class="m-0 fs13 ellipsis white-space-nowrap">
+                          &nbsp;&nbsp;{{this.idCardData.branchName}}
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p class="text-red m-0 white-space-nowrap fs13 text-right">
+                          Date Of Birth :
+                        </p>
+                      </td>
+                      <td>
+                        <p class="m-0 fs13 ellipsis white-space-nowrap">
+                          &nbsp;&nbsp;{{this.idCardData.dob}}
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p class="text-red m-0 white-space-nowrap fs13 text-right">
+                          Blood Group :
+                        </p>
+                      </td>
+                      <td>
+                        <p class="m-0 fs13 ellipsis white-space-nowrap">
+                          &nbsp;&nbsp;{{this.idCardData.bloodgroup}}
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p class="text-red m-0 white-space-nowrap fs13 text-right">
+                          Emp Code :
+                        </p>
+                      </td>
+                      <td>
+                        <p class="m-0 fs13 ellipsis white-space-nowrap">
+                          &nbsp;&nbsp;{{this.idCardData.employeeCode}}
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p class="text-red m-0 white-space-nowrap fs13 text-right">
+                          Phone No. :
+                        </p>
+                      </td>
+                      <td>
+                        <p class="m-0 fs13 ellipsis white-space-nowrap">
+                          &nbsp;&nbsp;{{this.idCardData.userNumber}}
+                        </p>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </body>
+</html>

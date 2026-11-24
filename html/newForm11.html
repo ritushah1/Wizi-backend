@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Form : 11 - Declaration Form</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+      }
+      .container {
+        padding: 10px 20px;
+      }
+      .logoAndFormName {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+      }
+
+      .centerHeader {
+        text-align: center;
+      }
+      .centerHeader h3 {
+        opacity: 0.5;
+        text-transform: uppercase;
+        font-size: 16px;
+      }
+
+      .no-side-border {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 12px 0px;
+      }
+
+      .no-side-border th,
+      .no-side-border td {
+        border: 1px solid #616161;
+        padding: 5px;
+        text-align: center;
+      }
+
+      .no-side-border :nth-child(1) {
+        width: 3%;
+      }
+      .leftAllign {
+        text-align: left !important;
+        width: 45%;
+      }
+      h4 {
+        text-transform: uppercase;
+        text-align: center;
+        text-decoration: underline;
+        font-size: 13px;
+        margin: 5px 0px;
+      }
+      .dateSign {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 10px;
+        margin: 6px 0px;
+        line-height: 15px;
+      }
+      .smallerPara {
+        font-size: 8px;
+        line-height: 15px;
+      }
+
+      .smallerPara span {
+        font-size: 10px;
+        margin-right: 10px;
+      }
+
+      .secondTable {
+        font-size: 9px;
+      }
+      .centerHeader p {
+        font-size: 11px;
+      }
+      .firstTable td {
+        font-size: 10px;
+      }
+      .lessWidth {
+        margin-left: 4%;
+      }
+
+      .checkbox {
+        height: 10px;
+        width: 10px;
+        border: 1px solid #7c7c7c;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="logoAndFormName">
+          <div>
+            <img
+              style="width: 40px"
+              src="{{mainApiUrl}}css/assets/EPFO_Logo.png"
+              alt="Italian Trulli"
+            />
+          </div>
+          <div style="text-align: right">
+            <p>New Form : 11 - Declaration Form</p>
+            <p class="smallerPara">
+              (To be retained by the employer for future reference)
+            </p>
+          </div>
+        </div>
+        <div class="centerHeader">
+          <h3>Employees’ Provident fund Organisation</h3>
+          <p class="normalFont">
+            Employees' Provident Fund Scheme, 1952 (Paragraph 34 & 57) and
+          </p>
+          <p class="normalFont">
+            Employees' Pension Scheme, 1995 (Paragraph 24)
+          </p>
+          <p class="smallFont">
+            (Declaration by a person taking up Employment in any Establishment
+            on which EPF Scheme, 1952 and for EPS, 1995 is applicable)
+          </p>
+        </div>
+      </div>
+
+      <div class="tableContent">
+        <table class="no-side-border firstTable">
+          <tr>
+            <td>1.</td>
+            <td class="leftAllign">
+              Name of Member <span style="opacity: 0.5"> (Aadhar Name) </span>
+            </td>
+            <td>{{name}}</td>
+          </tr>
+          <tr>
+            <td>2.</td>
+            <td class="leftAllign">
+              Father's Name
+              <div class="checkbox"></div>
+              Spouse's Name
+              <div class="checkbox"></div>
+              <br />
+              <span style="font-size: 8px; font-style: italic"
+                >(Please tick whichever applicable)</span
+              >
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>3.</td>
+            <td class="leftAllign">Date of Birth (dd/mm/yyyy)</td>
+            <td>{{dob}}</td>
+          </tr>
+          <tr>
+            <td>4.</td>
+            <td class="leftAllign">Gender (Male/Female/Transgender)</td>
+            <td>{{gender}}</td>
+          </tr>
+          <tr>
+            <td>5.</td>
+            <td class="leftAllign">
+              Marital Status ?
+              <span style="font-size: 9px"
+                >(Single/Married/Widow/Widower/Divorcee)</span
+              >
+            </td>
+            <td>{{maratialStatus}}</td>
+          </tr>
+          <tr>
+            <td rowspan="2">6.</td>
+            <td class="leftAllign">(a) eMail ID</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="leftAllign">
+              (b) Mobile No
+              <span style="opacity: 0.5">(Aadhar Registered)</span>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>7.</td>
+            <td class="leftAllign">
+              Whether earlier member of the Employee's Provident Fund Scheme,
+              1952 ?
+            </td>
+            <td>Yes / No</td>
+          </tr>
+          <tr>
+            <td>8.</td>
+            <td class="leftAllign">
+              Whether earlier member of the Employee's Pension Scheme, 1995 ?
+            </td>
+            <td>Yes / No</td>
+          </tr>
+          <tr>
+            <td rowspan="5">9.</td>
+            <td class="leftAllign">
+              <b>Previous Employment details ?</b>
+              <span style="opacity: 0.7">(If yes, 7 & 8 details above)</span>
+              <br />
+              a) Universal Account Number (UAN)
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="leftAllign">b) Previous PF Account Number</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="leftAllign">
+              c) Date of Exit from previous Employment ? (dd/mm/yyyy)
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="leftAllign">d) Scheme Certificate No (If issued)</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="leftAllign">
+              e) Pension Payment Order (PPO) (If issued)
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td rowspan="4">10.</td>
+            <td class="leftAllign">a) International Worker</td>
+            <td>Yes / No</td>
+          </tr>
+          <tr>
+            <td class="leftAllign">
+              b) If Yes, state country of orgin (name of other country)
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="leftAllign">c) Passport No.</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="leftAllign">
+              d) Validity of Passport (dd/mm/yyyy) to (dd/mm/yyyy)
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td rowspan="4">11.</td>
+            <td>
+              <b class="leftAllign">KYC Details :</b>
+              <span style="font-size: 9px"
+                >(attach self attested copies of following KYC's)</span
+              >
+            </td>
+            <td style="opacity: 0.4">
+              Must Enclose Scan copy for the following documents
+            </td>
+          </tr>
+          <tr>
+            <td class="leftAllign">a) Bank Account No. & IFS Code</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="leftAllign">b) Aadhaar Number</td>
+            <td>{{aadhaarNum}}</td>
+          </tr>
+          <tr>
+            <td class="leftAllign">
+              C) Permanent Account Number (PAN), If available
+            </td>
+            <td>{{panNumber}}</td>
+          </tr>
+        </table>
+
+        <table class="no-side-border secondTable">
+          <tr>
+            <td rowspan="7">12.</td>
+            <td style="width: 15%">First EPF Member Enrolled Date</td>
+            <td>First Employment EPF Wages</td>
+            <td>Are you EPF Member before 01/09/2014</td>
+            <td>If Yes, EPF Amount Withdrawn?</td>
+            <td>If Yes, EPS (Pension) Amount Withdrawn?</td>
+            <td style="width: 20%">
+              After Sep 2014 earned EPS (Pension) Amount Withdrawn before join
+              current Employer?
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>Yes / No</td>
+            <td>Yes / No</td>
+            <td>Yes / No</td>
+            <td>Yes / No</td>
+          </tr>
+        </table>
+      </div>
+
+      <div>
+        <h4>Undertaking</h4>
+        <div class="lessWidth">
+          <p class="smallerPara">
+            1) Certified that the particulars are true to the best of my
+            knowledge
+          </p>
+          <p class="smallerPara">
+            2) I authorise EPFO to use my Aadhar for verification /
+            authentication / eKYC purpose for service delivery
+          </p>
+          <p class="smallerPara">
+            3) Kindly transfer the fund and service details, if applicable, from
+            the previous PF account as declared above to the present PF account.
+            <br />
+            (The transfer would be possible only if the identified KYC details
+            approved by previous employer has been verified by present employer using his Digital Signature)
+          </p>
+          <p class="smallerPara">
+            4) In case of changes in above details, the same will be intimated
+            to employer at the earliest.
+          </p>
+        </div>
+        <div class="dateSign">
+          <div>
+            <p>Date :</p>
+            <p>Place :</p>
+          </div>
+          <div><p>Signature of Member</p></div>
+        </div>
+      </div>
+
+      <div>
+        <h4>Declaration by present employer</h4>
+
+        <p class="smallerPara">
+          <span>A.</span>
+          The member Mr./Ms./Mrs. {{name}} Has joined on {{joiningDate}} and has
+          been alloted PF Number _________________
+        </p>
+        <p class="smallerPara">
+          <span>B.</span>
+          In case the person was earlier not a member of EPF Scheme, 1952
+          and EPS, 1995: ((Post allotment of UAN) The UAN alloted or the member
+          is)
+        </p>
+
+        <div>
+          <p class="smallerPara" style="margin-left: 23px">
+            Please Tick the Appropriate Option:
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The KYC details of the
+            above member in the JAN database
+          </p>
+        </div>
+        <div class="dateSign" style="margin: 0px">
+          <p
+            class="smallerPara"
+            style="margin-left: 30px; display: flex; align-items: center"
+          >
+            <span class="checkbox"></span> Have not been uploaded
+          </p>
+          <p class="smallerPara" style="display: flex; align-items: center">
+            <span class="checkbox"></span> Have been uploaded but not approved
+          </p>
+          <p class="smallerPara" style="display: flex; align-items: center">
+            <span class="checkbox"></span> Have been uploaded and approved with
+            DSC
+          </p>
+        </div>
+
+        <p class="smallerPara">
+          <span>C.</span>
+          In case the person was earlier a member of EPF Scheme, 1952 and EPS
+          1995;
+        </p>
+        <p
+          class="smallerPara"
+          style="margin-left: 10px; display: flex; align-items: center"
+        >
+          <span class="checkbox"></span> The KYC details of the above member in
+          the UAN database have been approved with Digital Signature Certificate
+          and transfer request has been generated on portal
+        </p>
+        <p
+          class="smallerPara"
+          style="margin-left: 10px; display: flex; align-items: center"
+        >
+          <span class="checkbox"></span> As the DSC of establishment are not
+          registered with EPFO, the member has been informed to file physical
+          claim (Form-13) for transfer of funds from his previous establishment.
+        </p>
+      </div>
+
+      <div class="dateSign" style="margin-top: 20px">
+        <div>
+          <p>Date :</p>
+        </div>
+        <div><p>Signature of Employer with seal of Establishment</p></div>
+      </div>
+    </div>
+  </body>
+</html>

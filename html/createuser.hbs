@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome Email</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fff;
+      color: #444;
+    }
+    .email-wrapper {
+      max-width: 780px;
+      margin: 20px auto;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .header-bar {
+      height: 2px;
+      background: #000;
+    }
+    .email-header {
+      padding: 40px 30px 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .project-name {
+      font-size: 28px;
+      font-weight: bold;
+      color: #fcba4b;
+    }
+    .email-body {
+      padding: 20px 30px 40px 30px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .email-body p {
+      margin: 10px 0;
+    }
+    .email-body b {
+      color: #000;
+    }
+    .footer-bar {
+      background: #000;
+      color: #fff;
+      font-size: 13px;
+      padding: 15px 30px;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media screen and (max-width: 600px) {
+      .email-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 15px 10px 15px;
+      }
+      .project-name {
+        font-size: 22px;
+        margin-bottom: 10px;
+      }
+      .email-body {
+        padding: 15px;
+        font-size: 14px;
+      }
+      .footer-bar {
+        font-size: 12px;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="email-wrapper">
+    <div class="header-bar"></div>
+
+    <div class="email-header">
+      <div class="project-name">{{ProjectName}}</div>
+    </div>
+
+    <div class="email-body">
+      <p>Dear {{employeeName}},</p>
+      <p>Welcome to {{companyName}}!</p>
+      <p>
+        Your employee account has been successfully created in <b>{{ProjectName}}</b>.  
+        Below are your login details:
+      </p>
+
+      <p>Login ID: <b>{{user_email}}</b></p>
+      <p>Password: <b>{{user_password}}</b></p>
+
+      <p>
+        Please use the above credentials to log in for the first time.  
+        For security reasons, you will be prompted to change your password after your initial login.
+      </p>
+
+      <p><b>Best Regards,<br>{{companyName}}</b></p>
+    </div>
+<div class="app-download">
+  <p class="app-download-title">Download Our Mobile App</p>
+
+  <p class="app-download-text">
+    Download our app from the Google Play Store or Apple App Store.
+  </p>
+
+  <a
+    href="https://play.google.com/store/apps/details?id=com.mehtasoftech.tankhwapatrapro&hl=en_IN"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="store-link"
+  >
+    Google Play Store
+  </a>
+
+  &nbsp;&nbsp;
+
+  <a
+    href="https://apps.apple.com/in/app/tankhwa-patra-hcms/id6445912031"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="store-link"
+  >
+    Apple App Store
+  </a>
+</div>
+    <div class="footer-bar">
+      &nbsp;
+    </div>
+  </div>
+</body>
+</html>

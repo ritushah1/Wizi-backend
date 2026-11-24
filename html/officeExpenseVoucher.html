@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monthly Office Expense Voucher</title>
+    <style>
+        .container {
+            margin: auto;
+            max-width: 800px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 3px 5px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .footer .d-flex p {
+            width: 100%;
+        }
+
+        .border-bottom {
+            border-bottom: 1px solid black;
+        }
+
+        .border {
+            border: 1px solid black;
+        }
+
+        .border-top-0 {
+            border-top: 0px;
+        }
+
+        .border-none {
+            border: none;
+        }
+
+        .w-100 {
+            width: 100%;
+        }
+
+        .w-50 {
+            width: 50%;
+        }
+
+        .mt-20 {
+            margin-top: 20px;
+        }
+
+        .m-0 {
+            margin: 0px;
+        }
+
+        .pl-5 {
+            padding-left: 5px;
+        }
+
+        .p-0 {
+            padding: 0px;
+        }
+
+        .p-1 {
+            padding: 1px;
+        }
+
+        .w-15per {
+            width: 12%;
+        }
+
+        .w-27per {
+            width: 27%;
+        }
+
+        .w-50 {
+            width: 50%;
+        }
+
+        .mw-396 {
+            max-width: 396px !important;
+        }
+
+        .white-space-no-wrap {
+            white-space: nowrap !important;
+        }
+
+        .desc-wrapper {
+            max-width: 100%;
+        }
+
+        .manageAddress {
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            /* 👇 3 lines control */
+            line-height: 1.3em;
+            max-height: calc(1.3em * 200);
+
+            /* wrapping */
+            white-space: normal;
+            word-break: break-word;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <table class="w-100">
+                <thead>
+                    <tr>
+                        <th colspan="6">{{companyName}}</th>
+                    </tr>
+                    <tr>
+                        <td colspan="6" class="text-center">{{companyAddress}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" class="p-1"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" class="text-center">{{month}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" class="p-1"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" class="pl-5">
+                            <b>Monthly Office Expense Voucher No.:
+                                &nbsp;{{officeExpenseVoucherNo}}</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" class="p-1"></td>
+                    </tr>
+                    <tr>
+                        <td class="pl-5"><b>Location :</b></td>
+                        <td colspan="2">{{location}}</td>
+                        <td class="pl-5"><b>Employee Name: </b></td>
+                        <td colspan="2">{{employeeName}}</td>
+                    </tr>
+                    <tr>
+                        <td class="pl-5"><b>Request Date :</b></td>
+                        <td colspan="2">{{requestDate}}</td>
+                        <td class="pl-5"><b>Approval Date: </b></td>
+                        <td colspan="2">{{approvalDate}}</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="mt-20">
+            <table class="w-100">
+                <tbody>
+                    <tr>
+                        <th>Sr. No.</th>
+                        <th>Voucher No.</th>
+                        <th>Date of Expense</th>
+                        <th>Expense Category</th>
+                        <th>Expense Head</th>
+                        <th>Description</th>
+                        <th>Total Amount (&#8377;)</th>
+                    </tr>
+                    {{#each transactions}}
+                    <tr>
+                        <td class="text-center">{{srNo}}</td>
+                        <td>{{officeExpenseTransVoucherNo}}</td>
+                        <td>{{expense_date}}</td>
+                        <td>{{officeExpenseCategory}}</td>
+                        <td>{{officeExpenseHead}}</td>
+                        <td>
+                            <div class="desc-wrapper">
+                                <div class="manageAddress">
+                                    {{description}}
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-right">{{expenseAmount}}</td>
+                    </tr>
+                    {{/each}}
+
+                    <tr>
+                        <th class="text-right" colspan="6">Total</th>
+                        <td colspan="5" class="text-right">{{totalExpenseAmount}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="mt-20">
+            <table>
+                <tr>
+                    <td class="w-50 pl-5"><b>Opening Balance: &#8377;</b></td>
+                    <td>{{openingBalance}}</td>
+                </tr>
+                <tr>
+                    <td class="w-50 pl-5">
+                        <b>Add: </b> <span>Received during the period </span><b>&#8377;</b>
+                    </td>
+                    <td>{{AddBalance}}</td>
+                </tr>
+                <tr>
+                    <td class="w-50 pl-5">
+                        <b>Less: </b> <span>Amount expanded during the period </span><b>&#8377;</b>
+                    </td>
+                    <td>{{lessBalance}}</td>
+                </tr>
+                <tr>
+                    <td class="w-50 pl-5"><b>Closing Balance: &#8377;</b></td>
+                    <td>{{closingBalance}}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="footer mt-20">
+            <div class="d-flex">
+                <p class="m-0 border w-100 pl-5">
+                    <b>Total Claimed Amount: &#8377; {{totalClaimedAmount}}</b>
+                </p>
+                <p class="m-0 border-none w-100">&nbsp;</p>
+            </div>
+            <div class="d-flex">
+                <p class="m-0 border w-50 border-top-0 pl-5">
+                    <b>Total Approved Amount: &#8377;{{totalApprovedAmount}}</b>
+                </p>
+                <p class="m-0 border-bottom">
+                    <b class="pl-5">Signature</b>
+                </p>
+            </div>
+        </div>
+
+        <div class="mt-20">
+            <p class="m-0 pl-5"><b>Approval History</b></p>
+            <div>
+                <table>
+                    <tr>
+                        <td class="text-center"><b>SrNo.</b></td>
+                        <td class="text-center"><b>Voucher No.</b></td>
+                        <td class="text-center"><b>Approval Date</b></td>
+                        <td class="text-center"><b>Approved by</b></td>
+                        <td class="text-center"><b>Designation</b></td>
+                        <td class="text-center"><b>Remarks</b></td>
+                    </tr>
+                    {{#each transactions}}
+                    <tr>
+                        <td class="text-center"><b>{{srNo}}</b></td>
+                        <td class="text-center">{{officeExpenseTransVoucherNo}}</td>
+                        <td class="text-center">
+                            {{#each this.approvalDateArray}} {{this}}<br />
+                            {{/each}}
+                        </td>
+
+                        <td class="text-center">
+                            {{#each this.approvalByArray}} {{this}}<br />
+                            {{/each}}
+                        </td>
+
+                        <td class="text-center">
+                            {{#each this.approvalByDesignationArray}} {{this}}<br />
+                            {{/each}}
+                        </td>
+
+                        <td class="text-center">
+                            {{#each this.approvalRemarksArray}} {{this}}<br />
+                            {{/each}}
+                        </td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

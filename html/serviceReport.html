@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Report</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f9f9f9;
+            padding: 20px;
+            font-size: 13px;
+            /* color: #333; */
+        }
+
+        h2,
+        h3,
+        h4 {
+            margin-bottom: 8px;
+            font-weight: 600;
+            /* color: #222; */
+        }
+
+        .report-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .company-info h2 {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .company-info p {
+            font-size: 12px;
+            color: #555;
+        }
+
+        .report-info {
+            text-align: right;
+            font-size: 12px;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .card h4 {
+            margin-bottom: 10px;
+            font-size: 14px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        table {
+            /* width: 100%; */
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            padding: 6px 4px;
+            width: 35%;
+            /* color: #444; */
+            /* font-weight: 500; */
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-bottom: 1px dashed #8f8f8f;
+        }
+
+        td {
+            padding: 6px 4px;
+            /* color: #333; */
+            font-size: 13px;
+            white-space: wrap;
+            vertical-align: baseline;
+            border-bottom: 1px dashed #8f8f8f;
+        }
+
+        .border-bottom {
+            border-bottom: 1px dashed #8f8f8f;
+        }
+
+        .w-25 {
+            max-width: 25% !important;
+        }
+
+        .w-30 {
+            width: 30% !important;
+        }
+
+        .w-100 {
+            width: 100% !important;
+        }
+
+        .w-auto {
+            width: auto !important;
+        }
+
+        .remarks {
+            margin-top: 20px;
+        }
+
+        .remarks h4 {
+            margin-bottom: 6px;
+        }
+
+        .remarks p {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fff;
+            font-size: 13px;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .gap-10 {
+            gap: 10px;
+        }
+
+        .d-flex>div {
+            width: 100%;
+        }
+
+        .colonDiv {
+            padding-inline: 0px !important;
+            max-width: 5px !important;
+        }
+
+        .word-break-normal {
+            word-break: normal !important;
+        }
+
+        .mt-10 {
+            margin-top: 10px;
+        }
+
+        .fieldDiv>div {
+            padding: 6px 4px;
+        }
+
+        .pl-10 {
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="report-header">
+        <div class="company-info">
+            <h2>{{companyName}}</h2>
+            <p>{{companyAddress}}</p>
+        </div>
+    </div>
+
+    <div class="card">
+        {{visitReportName}}
+    </div>
+
+    <!-- Customer -->
+    <div class="d-flex gap-10">
+        <div class="card">
+            <h4>Customer</h4>
+            <table class="w-100">
+                <tr>
+                    <th>Company</th>
+                    <td class="colonDiv">:</td>
+                    <td>{{customerCompanyName}}</td>
+                </tr>
+                <tr>
+                    <th>Contact Person</th>
+                    <td class="colonDiv">:</td>
+                    <td>{{customerName}}</td>
+                </tr>
+                <tr>
+                    <th>Mobile</th>
+                    <td class="colonDiv">:</td>
+                    <td>{{customerMobile}}</td>
+                </tr>
+                <tr>
+                    <th>Location</th>
+                    <td class="colonDiv">:</td>
+                    <td>{{customerCurrLocation}}</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Assigned To -->
+        <div class="card">
+            <h4>Assigned To</h4>
+            <table class="w-100">
+                <tr>
+                    <th>Name</th>
+                    <td class="colonDiv">:</td>
+                    <td>{{assignUserName}}</td>
+                </tr>
+                <tr>
+                    <th>Employee Code</th>
+                    <td class="colonDiv">:</td>
+                    <td>{{assignEmpCode}}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td class="colonDiv">:</td>
+                    <td>{{assignEmpEmail}}</td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <td class="colonDiv">:</td>
+                    <td>{{assignEmpNumber}}</td>
+                </tr>
+                <tr>
+                    <th>Co Persons</th>
+                    <td class="colonDiv">:</td>
+                    <td>{{coPersons}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Visit Summary -->
+    <div class="card">
+        <h4>Visit Summary</h4>
+        <div class="d-flex gap-10">
+            <table class="w-100">
+                <tr>
+                    <th>Visit Date / Time</th>
+                    <td class="colonDiv">:</td>
+                    <td>{{visitDate}}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td class="colonDiv">:</td>
+                    <td>{{visitStatus}}</td>
+                </tr>
+                <tr>
+                    <th>Check-in</th>
+                    <td class="colonDiv">:</td>
+                    <td>{{checkInDateTime}}</td>
+                </tr>
+                <tr>
+                    <th>Check-in Lattitude</th>
+                    <td class="colonDiv">:</td>
+                    <td>{{checkInLatitude}}</td>
+                </tr>
+                <tr>
+                    <th>Check-in Longitude</th>
+                    <td class="colonDiv">:</td>
+                    <td>{{checkInLongitude}}</td>
+                </tr>
+                <tr>
+                    <th>Check-in Location</th>
+                    <td class="colonDiv">:</td>
+                    <td>{{checkInLocation}}</td>
+                </tr>
+            </table>
+
+            <table class="w-100">
+                <tr>
+                    <th>Purpose</th>
+                    <td class="colonDiv">:</td>
+                    <td>{{visitPurpose}}</td>
+                </tr>
+                <tr>
+                    <th>Product</th>
+                    <td class="colonDiv">:</td>
+                    <td>{{productName}}</td>
+                </tr>
+                <tr>
+                    <th>Check-out</th>
+                    <td class="colonDiv">:</td>
+                    <td>{{checkOutDateTime}}</td>
+                </tr>
+                <tr>
+                    <th>Check-out Lattitude</th>
+                    <td class="colonDiv">:</td>
+                    <td>{{checkOutLatitude}}</td>
+                </tr>
+                <tr>
+                    <th>Check-out Longitude</th>
+                    <td class="colonDiv">:</td>
+                    <td>{{checkOutLongitude}}</td>
+                </tr>
+                <tr>
+                    <th>Check-out Location</th>
+                    <td class="colonDiv">:</td>
+                    <td>{{checkOutLocation}}</td>
+                </tr>
+            </table>
+        </div>
+        {{#if visitFormCustomizeValues}}
+        <div class="mt-10">
+            <h4>Visit Extra Fields</h4>
+            <div>
+                <div class="d-flex fieldDiv">
+                    <div class="w-30 word-break-normal border-bottom ">
+                        Field
+                    </div>
+                    <div class="colonDiv border-bottom">:</div>
+                    <div class="w-100 word-break-normal border-bottom pl-10">
+                        Value
+                    </div>
+                </div>
+                {{#each visitFormCustomizeValues}}
+                <div class="d-flex fieldDiv">
+                    <div class="w-30 word-break-normal border-bottom">{{label}}</div>
+                    <div class="colonDiv border-bottom">:</div>
+                    {{#if isTextArea}}
+                    <div class="w-100 word-break-normal border-bottom pl-10">{{{value}}}</div>
+                    {{else}}
+                    <div class="w-100 word-break-normal border-bottom pl-10">{{value}}</div>
+                    {{/if}}
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+
+    </div>
+
+    <!-- Custom Fields -->
+    {{#if visitReportCustomizeValues}}
+    <div class="card">
+        <h4>Report</h4>
+        <div>
+            <div class="d-flex fieldDiv">
+                <div class="w-30 word-break-normal border-bottom ">
+                    <b>Field</b>
+                </div>
+                <div class="colonDiv border-bottom">:</div>
+                <div class="w-100 word-break-normal border-bottom pl-10">
+                    <b>Value</b>
+                </div>
+            </div>
+            {{#each visitReportCustomizeValues}}
+            <div class="d-flex fieldDiv">
+                <div class="w-30 word-break-normal border-bottom">{{label}}</div>
+                <div class="colonDiv border-bottom">:</div>
+                {{#if type}}
+                <div class="w-100 word-break-normal border-bottom pl-10">
+                    <img src="{{value}}" alt="image" height="100px">
+                </div>
+                {{else if isTextArea}}
+                <div class="w-100 word-break-normal border-bottom pl-10">{{{value}}}</div>
+                {{else}}
+                <div class="w-100 word-break-normal border-bottom pl-10">{{value}}</div>
+                {{/if}}
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    {{/if}}
+</body>
+
+</html>

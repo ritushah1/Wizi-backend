@@ -1,0 +1,169 @@
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="./bootstrap.css" />
+  <title>Attendance Report with Salary Cycle</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif !important;
+    }
+
+    .table {
+      page-break-inside: auto;
+    }
+
+    /* Ensure each user's rows stay together */
+    .user-row {
+      page-break-inside: avoid !important;
+    }
+
+    /* Prevent page break after first row of each user */
+    .employee-row-first {
+      page-break-after: avoid !important;
+    }
+
+    /* Prevent page break before and after middle rows */
+    .employee-row-other {
+      page-break-before: avoid !important;
+      page-break-after: avoid !important;
+    }
+
+    /* Last row of user can allow page break after */
+    .employee-row-last {
+      page-break-before: avoid !important;
+      page-break-after: auto !important;
+    }
+
+    .table tr {
+      page-break-inside: avoid;
+    }
+
+    .table td {
+      page-break-inside: avoid;
+    }
+
+    tr {
+      page-break-inside: avoid !important;
+    }
+
+    th {
+      font-size: 7px;
+      padding-top: 2px;
+      padding-bottom: 2px;
+      text-wrap: wrap;
+      white-space: wrap;
+      line-height: 9px;
+    }
+
+    td {
+      padding-top: 2px;
+      padding-bottom: 2px;
+      font-size: 7px;
+      text-wrap: wrap;
+      white-space: wrap;
+    }
+
+    .ml20 {
+      margin-left: 20px !important;
+    }
+
+    .d-flex {
+      display: flex !important;
+    }
+
+    .policy-header {
+      background-color: #D3D3D3;
+      font-weight: bold;
+      font-size: 12px;
+      padding: 8px;
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      page-break-after: avoid !important;
+    }
+
+    .employee-row-first {
+      background-color: #f9f9f9;
+    }
+
+    .employee-row-other {
+      background-color: #ffffff;
+    }
+
+    /* Table header should repeat on each page */
+    thead {
+      display: table-header-group;
+    }
+
+    @media print {
+      @page {
+        margin: 15px 15px 40px 15px !important;
+      }
+
+      /* Ensure user rows don't split but allow multiple users per page */
+      .user-row {
+        page-break-inside: avoid !important;
+      }
+
+      .employee-row-first {
+        page-break-after: avoid !important;
+      }
+
+      .employee-row-other {
+        page-break-before: avoid !important;
+        page-break-after: avoid !important;
+      }
+
+      .employee-row-last {
+        page-break-before: avoid !important;
+        page-break-after: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  {{#each salaryCycles}}
+  <!-- Removed cycle name from header as per requirement -->
+
+  <div style="margin-bottom: 20px">
+    <table border="1" style="
+          width: 100%;
+          border-collapse: collapse;
+          border: 1px solid rgb(189, 189, 189);
+        ">
+      <thead>
+        <tr>
+          {{#each ../headers}}
+          <th>{{this}}</th>
+          {{/each}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each this.users}}
+        <!-- Each user's rows grouped together -->
+        {{#each this.rows}}
+        <tr class="{{#if @first}}employee-row-first{{else}}employee-row-other{{/if}}{{#if @last}} employee-row-last{{/if}} user-row">
+          {{#each this}}
+          <td style="
+                text-align: center;
+                line-height: 9px;
+                border: 1px solid rgb(189, 189, 189);
+              ">
+            {{this}}
+          </td>
+          {{/each}}
+        </tr>
+        {{/each}}
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  {{/each}}
+
+  <script src="./bootstrap.js"></script>
+  <script src="./jquery.js"></script>
+  <script src="./popper.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,412 @@
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Pay Slip</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+            box-sizing: border-box;
+            font-size: 12px;
+        }
+
+        .container {
+            max-width: 880px;
+            margin: 20px;
+            padding: 0px;
+            border: 1px solid black;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            padding: 2px 3px;
+            height: 27px !important;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .justify-space-between {
+            justify-content: space-between;
+        }
+
+        .w-100 {
+            width: 100% !important;
+        }
+
+        .w-50 {
+            width: 50% !important;
+        }
+
+        .dotted-border-bottom {
+            border-bottom: 1px dotted #b3b3b3;
+        }
+
+        .p-5 {
+            padding: 5px !important;
+        }
+
+        .border-table {
+
+            th {
+                border: 1px solid black;
+            }
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        .text-right {
+            text-align:
+                right;
+        }
+
+        .text-nowrap {
+            text-wrap: nowrap;
+        }
+
+        .companyLogo {
+            -o-object-fit: content;
+            object-fit: content;
+            background: transparent;
+            border-radius: 15px;
+            width: auto;
+            height: 80px;
+            mix-blend-mode: darken;
+            | margin: auto !important;
+        }
+
+        h3 {
+            font-size: 1.17em;
+        }
+
+        .cbs-Item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+            height: 50px;
+            margin: 5%;
+        }
+
+        .cbs-Item img {
+            max-width: 100%;
+            max-height:
+                100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='container'>
+        <div class='d-flex justify-space-between p-5 dotted-border-bottom'>
+            <div class='w-100 d-flex justify-space-between'>
+                <div style="width: 60%;">
+                    <div>
+                        <h3>{{companyname}}</h3>
+                    </div>
+                    <p>{{companyaddress}}</p>
+                </div>
+                <div class="cbs-Item" style="display: flex; justify-content: center; align-items: center;">
+                    {{#if companylogo}}
+                    <img src="{{ ApiURL }}uploads/company/logo/{{companylogo}}" alt="Company Logo" />
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+        <div class='d-flex justify-space-between p-5 dotted-border-bottom'>
+            <div class='w-100'>
+                <table>
+                    <tr>
+                        <td colspan='3'>
+                            Payslip for the month of
+                            <b>{{month}}-{{year}}</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Employee ID</td>
+                        <td>:</td>
+                        <td>{{employeecode}}</td>
+                    </tr>
+                    <tr>
+                        <td>Employee Name</td>
+                        <td>:</td>
+                        <td>{{employeename}}</td>
+                    </tr>
+                    <tr>
+                        <td>Location</td>
+                        <td>:</td>
+                        <td>{{branch}}</td>
+                    </tr>
+                    <tr>
+                        <td>Date of joining</td>
+                        <td>:</td>
+                        <td>{{slaceJoiningDate}}</td>
+                    </tr>
+                    <tr>
+                        <td>PF Account No</td>
+                        <td>:</td>
+                        <td>{{pfNumber}}</td>
+                    </tr>
+                    <tr>
+                        <td>UAN No</td>
+                        <td>:</td>
+                        <td>{{uanNumber}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class='w-100'>
+                <table>
+                    <tr>
+                        <td>Attendance Period From</td>
+                        <td>:</td>
+                        <td>{{slaceStartDate}} To {{slaceEndDate}}</td>
+                    </tr>
+                    <tr>
+                        <td>Department</td>
+                        <td>:</td>
+                        <td>{{department}}</td>
+                    </tr>
+                    <tr>
+                        <td>Designation</td>
+                        <td>:</td>
+                        <td>{{designation}}</td>
+                    </tr>
+                    <tr>
+                        <td>PAN No</td>
+                        <td>:</td>
+                        <td>{{pancard}}</td>
+                    </tr>
+                    <tr>
+                        <td>ESIC Account No</td>
+                        <td>:</td>
+                        <td>{{esicNumber}}</td>
+                    </tr>
+                    <tr>
+                        <td>Bank Account No</td>
+                        <td>:</td>
+                        <td>{{userbankAccountNo}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class='d-flex justify-space-between p-5'>
+            <div class='w-100'>
+                <table>
+                    <tr>
+                        <td>
+                            {{#if (eq salarycalculated "hourly")}}
+                            Payable Hours
+                            {{else}}
+                            Payable Days
+                            {{/if}}
+                        </td>
+
+                        <td>:</td>
+                        <td>{{payableDays}}</td>
+                    </tr>
+                    <tr>
+                        <td>Holidays</td>
+                        <td>:</td>
+                        <td>{{holiday}}</td>
+                    </tr>
+                    <tr>
+                        <td>Total Working Days</td>
+                        <td>:</td>
+                        <td>{{workingDays}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class='w-100'>
+                <table>
+                    <tr>
+                        <td>Present Days</td>
+                        <td>:</td>
+                        <td>{{presentday}}</td>
+                    </tr>
+                    <tr>
+                        <td>Weekly Offs</td>
+                        <td>:</td>
+                        <td>{{weekoff}}</td>
+                    </tr>
+                    <tr>
+                        <td>Month Days</td>
+                        <td>:</td>
+                        <td>{{monthDays}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class='w-100'>
+                <table>
+                    <tr>
+                        <td>Absent Days</td>
+                        <td>:</td>
+                        <td>{{allAbsent}}</td>
+                    </tr>
+                    <tr>
+                        <td>Leave Days</td>
+                        <td>:</td>
+                        <td>{{allLeaves}}</td>
+                    </tr>
+                    {{#if attendancePenaltyShow}}
+                    <tr>
+                        <td>Attendance Penalty</td>
+                        <td>:</td>
+                        <td>{{attendancePenalty}}</td>
+                    </tr>
+                    {{/if}}
+                </table>
+            </div>
+        </div>
+        <div class='d-flex justify-space-between'>
+            <div class='border-table' style="width: 60%;">
+                <table class='w-100'>
+                    <thead>
+                        <tr>
+                            <th class='text-left' style="border-left: none !important;">Earnings</th>
+                            <th class='text-right'>Actual</th>
+                            <th class='text-right'>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each allEarnings}}
+                        <tr>
+
+                            {{#if (and (eq this undefined))}}
+
+                            <td style="border-right: 1px solid black;">
+                                &nbsp;
+                            </td>
+                            {{/if}}
+                            {{#if (and (eq this undefined))}}
+
+                            <td style="border-right: 1px solid black;">
+                                &nbsp;
+                            </td>
+
+                            {{/if}}
+                            {{#if (and (eq this undefined))}}
+
+                            <td style="border-right: 1px solid black;">
+                                &nbsp;
+                            </td>
+                            {{/if}}
+
+                            {{#if (and (eq this.salaryfieldside 'E'))}}
+
+                            <td style="border-right: 1px solid black;" class="fs-0875">
+                                {{this.payheadName}}
+                            </td>
+                            {{/if}}
+
+                            {{#if (and (eq this.salaryfieldside 'E'))}}
+                            <td style="border-right: 1px solid black;" class="text-right">
+                                {{this.actualamount}}
+                            </td>
+                            {{/if}}
+
+                            {{#if (and (eq this.salaryfieldside 'E'))}}
+                            <td style="border-right: 1px solid black;" class="text-right">
+                                {{this.employeeAmount}}
+                            </td>
+                            {{/if}}
+
+                            <!-- <td>Basic</td>
+                            <td>15127.00</td>
+                            <td>15127.00</td> -->
+                        </tr>
+                        {{/each}}
+                        <tr>
+                            <td style="border: 1px solid black;border-left: none !important;">
+                                <b>Total Earnings</b>
+                            </td>
+                            <td style="border: 1px solid black;" class='text-right'>
+                                <b>{{totalactualearning}} </b>
+                            </td>
+                            <td style="border: 1px solid black;" class='text-right'>
+                                <b>{{totalearning}} </b>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan='3' style="border: 1px solid black;border-left: none !important;">&nbsp;</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class='border-table' style="width: 40%;">
+                <table class='w-100'>
+                    <thead>
+                        <tr>
+                            <th class='text-left' style="border-left: none;">Deductions</th>
+                            <th class='text-right'>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each deduction}}
+                        <tr>
+
+                            {{#if (and (eq this undefined))}}
+
+                            <td style="border-right: 1px solid black;">
+                                &nbsp;
+                            </td>
+
+                            {{/if}}
+                            {{#if (and (eq this undefined))}}
+
+                            <td style="border-right: 1px solid black;">
+                                &nbsp;
+                            </td>
+                            {{/if}}
+
+                            {{#if (and (eq this.salaryfieldside 'D'))}}
+
+                            <td style="border-right: 1px solid black;">
+                                {{this.payheadName}}
+                            </td>
+                            {{/if}}
+
+                            {{#if (and (eq this.salaryfieldside 'D'))}}
+                            <td style="border-right: 1px solid black;" class='text-right'>
+                                {{this.employeeAmount}}
+                            </td>
+                            {{/if}}
+                        </tr>
+                        {{/each}}
+                        <tr>
+                            <td style="border: 1px solid black; border-left: none !important;"><b>Total Deductions</b>
+                            </td>
+                            <td style="border: 1px solid black;" class='text-right'><b>{{totaldeduction}}</b></td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid black; border-left: none !important;"> <b>Net Pay</b></td>
+                            <td style="border: 1px solid black;" class='text-right'><b>{{nettotal}}</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class='border-table w-100'>
+            <table class='w-100 h-100'>
+                <td><b>INR {{numbertext}}</b></td>
+            </table>
+        </div>
+    </div>
+    <div class='w-100'>
+        <p style="padding-left: 20px;">*This is computer generated slip, hence does not require signature.</p>
+    </div>
+</body>
+
+</html>

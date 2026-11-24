@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Declaration Form Form-1</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+      }
+      .container {
+        padding: 20px 40px;
+      }
+      .logoAndCode,
+      .topHead {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        text-transform: uppercase;
+        font-size: 13px;
+      }
+      .firstAndSecondTableSubHeading p {
+        display: inline-block;
+      }
+      .side-border {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 12px 0px;
+      }
+
+      .side-border th,
+      .side-border td {
+        border: 1px solid black;
+        padding: 4px;
+        text-align: left;
+        font-size: 9px;
+        font-weight: 600;
+        height: 10px;
+      }
+      .tableContainer {
+        display: flex;
+        gap: 10px;
+      }
+      .firstAndSecondTable {
+        margin: 10px 0px;
+      }
+      .subHeading {
+        font-weight: 600;
+        font-size: 10px;
+      }
+      p {
+        font-size: 9px;
+        font-weight: 600;
+      }
+      .sign {
+        display: flex;
+        justify-content: space-between;
+        margin: 25px 0px;
+      }
+      .forthTable .side-border td {
+        text-align: center;
+      }
+      .lastTable {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .footer {
+        display: flex;
+        justify-content: space-between;
+      }
+      .checkbox1 {
+        height: 15px;
+        width: 20px;
+        border: 1px solid #000000;
+        display: inline-block;
+        margin-right: 3px;
+        margin-top: 2px;
+      }
+      .checkbox2 {
+        height: 15px;
+        width: 20px;
+        border: 1px solid #000000;
+        display: inline-block;
+        margin-right: 3px;
+        margin-top: 2px;
+      }
+      .checkbox3 {
+        height: 15px;
+        width: 15px;
+        border: 1px solid #000000;
+        display: inline-block;
+        margin-right: 3px;
+        margin-top: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <div class="header">
+          <div class="topHead">
+            <h3>&nbsp;</h3>
+            <h3>Declaration form</h3>
+            <h3>Form-1</h3>
+          </div>
+          <div class="logoAndCode">
+            <img
+              src="{{mainApiUrl}}css/assets/ESIC-White.png"
+              alt=""
+              style="width: 47px; margin-left: 15px"
+            />
+            <span><b>Employer's Code No.</b></span>
+            <div
+              style="
+                width: 50%;
+                height: 20px;
+                border: 1px solid black;
+                margin-right: 40px;
+                margin-top: 12px;
+              "
+            ></div>
+          </div>
+        </div>
+        <div class="firstAndSecondTable">
+          <div class="firstAndSecondTableSubHeading">
+            <p class="subHeading" style="width: 66%">
+              (A) Insured Person's Particulars
+            </p>
+            <p class="subHeading">(B) Employer's Particulars</p>
+          </div>
+          <div class="tableContainer">
+            <table class="side-border" style="width: 64%">
+              <tr>
+                <td style="width: 22%">1 Insurance No.</td>
+                <td colspan="3"></td>
+              </tr>
+              <tr>
+                <td>2 Name (in block capital)</td>
+                <td
+                  colspan="3"
+                  style="text-transform: uppercase; letter-spacing: 2px"
+                >
+                  {{name}}
+                </td>
+              </tr>
+              <tr>
+                <td>3 Father's / Husband's name</td>
+                <td colspan="3"></td>
+              </tr>
+              <tr>
+                <td rowspan="2">4 Date of Birth</td>
+                <td rowspan="2" style="width: 22%">
+                  DD &nbsp;&nbsp;&nbsp; MM&nbsp;&nbsp;&nbsp; YY <br /><span
+                    class="checkbox1"
+                    style="text-align: center; vertical-align: middle"
+                    >{{dobDate}}</span
+                  ><span
+                    class="checkbox1"
+                    style="text-align: center; vertical-align: middle"
+                    >{{dobMonth}}</span
+                  ><span
+                    class="checkbox1"
+                    style="text-align: center; vertical-align: middle"
+                    >{{dobYear}}</span
+                  >
+                </td>
+                <td>5 Marital Status</td>
+                <td>{{maratialStatus}}</td>
+                <!-- <td>M / U / W</td> -->
+              </tr>
+
+              <tr>
+                <td>6 Sex</td>
+                <!-- <td>M / F</td> -->
+                <td>{{gender}}</td>
+              </tr>
+
+              <tr>
+                <td colspan="2">
+                  7 Present Address <br /><br />
+                  ________________________________ <br /><br />
+                  ________________________________
+                  <br /><br />
+                  ________________________________
+                  <br /><br />
+                  ________________________________
+                  <br />
+                  Pin: <span class="checkbox3"></span
+                  ><span class="checkbox3"></span><span class="checkbox3"></span
+                  ><span class="checkbox3"></span><span class="checkbox3"></span
+                  ><span class="checkbox3"></span><br />
+                  e-mail address:
+                </td>
+                {{#if permanentAddressCountry}}
+                <td colspan="2" style="vertical-align: baseline">
+                  <span>8 Permanent Address</span> <br /><br />
+                  {{permanentAddressHouseNumber}} &nbsp;
+                  {{permanentAddressArea}} {{permanentAddressLandmark}} <br />
+                  {{permanentAddressCity}}&nbsp; {{permanentAddressState}}&nbsp;
+                  {{permanentAddressCountry}}
+                  <br />
+                  Pin: {{#each zipcode}}
+                  <span
+                    class="checkbox3"
+                    style="text-align: center; vertical-align: middle"
+                  >
+                    {{this}}
+                  </span>
+                  {{/each}}
+                  <br />
+                  e-mail address:
+                </td>
+                {{else}}
+                <td colspan="2">
+                  8 Permanent Address <br /><br />
+                  ________________________________ <br /><br />
+                  ________________________________ <br /><br />
+                  ________________________________ <br /><br />
+                  ________________________________ <br />
+                  Pin:
+                  <span class="checkbox3"></span>
+                  <span class="checkbox3"></span>
+                  <span class="checkbox3"></span>
+                  <span class="checkbox3"></span>
+                  <span class="checkbox3"></span>
+                  <span class="checkbox3"></span>
+                  <br />
+                  e-mail address:
+                </td>
+                {{/if}}
+              </tr>
+              <tr>
+                <td colspan="2">Branch Office:</td>
+                <td colspan="2">Dispensary:</td>
+              </tr>
+            </table>
+
+            <table class="side-border" style="width: 33%">
+              <tr>
+                <td rowspan="2" style="width: 80px">10. Date of Appointment</td>
+                <td>Day Month Year</td>
+              </tr>
+              <tr>
+                <td>
+                  <span
+                    class="checkbox2"
+                    style="text-align: center; vertical-align: middle"
+                    >{{joiningDate}}</span
+                  ><span
+                    class="checkbox2"
+                    style="text-align: center; vertical-align: middle"
+                    >{{joiningMonth}} </span
+                  ><span
+                    class="checkbox2"
+                    style="text-align: center; vertical-align: middle"
+                    >{{joiningYear}}
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" style="height: 102px; vertical-align: top">
+                  11. Name & Address of the employer <br />
+                  <b>{{companyName}}</b> <br />
+                  {{companyAddress}}
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  12. In case of any previous employment please fillup the
+                  details as under:-
+                </td>
+              </tr>
+              <tr>
+                <td>Previous Ins. No.</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Emplrs. Code No.</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan="2">11. Name & Address of the employer</td>
+              </tr>
+              <tr>
+                <td colspan="2" style="height: 40px"></td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="thirdTable">
+            <p>
+              (c) Details of the nominee u/s 71 of ESI Act 1948 / Rule 56(2) of
+              ESI (Central) Rules 1950 for Payment of cash benefit in the event
+              of death
+            </p>
+
+            <table class="side-border">
+              <tr>
+                <td>Name of the Nominee</td>
+                <td>Relationship with insured person</td>
+                <td>Address</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>
+
+            <p>
+              I hereby declare that the above particulars have been given by me
+              and are correct to the best of my knowledge and i belief. I also
+              under take to intimate to the corporation any change in the
+              membership of my family within 15 days of such change having
+              occured.
+            </p>
+
+            <p style="margin-top: 8px">Counter Signature of the Employer</p>
+
+            <div class="sign">
+              <p>Signature with Seal</p>
+              <p>Signature / T.I of I P</p>
+            </div>
+          </div>
+
+          <div class="forthTable">
+            <p class="subHeading">(D) FAMILY PARTICULARS OF INSURED PERSON</p>
+
+            <table class="side-border">
+              <tr>
+                <td style="width: 4%">Sl. No.</td>
+                <td style="width: 32%">Name</td>
+                <td style="width: 12%">Date of Birth</td>
+                <td>Relationship with insured person</td>
+                <td>Whether residing with him/her or not</td>
+                <td colspan="2">If No, State place of Residence</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>YES/NO</td>
+                <td>TOWN</td>
+                <td>STATE</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="lastTable">
+            <div style="width: 60%">
+              <p class="subHeading" style="text-align: center">
+                ESI CORPORATION
+              </p>
+              <p style="text-align: center">Temporary Identity Card</p>
+              <table class="side-border">
+                <tr>
+                  <td style="width: 22%">Name</td>
+                  <td colspan="3"></td>
+                </tr>
+                <tr>
+                  <td>Ins. No.</td>
+                  <td></td>
+                  <td style="width: 20%">Date of Entry</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Father’s/ Husband’s Name</td>
+                  <td></td>
+                  <td>Date of Birth</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Branch Office</td>
+                  <td></td>
+                  <td>Dispensary</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Name, Address & Code No. of the employer</td>
+                  <td colspan="3"></td>
+                </tr>
+              </table>
+            </div>
+            <div style="width: 40%; text-align: center; margin: auto">
+              <p>Valid for 3 months from the date of appointment</p>
+              <div
+                style="
+                  width: 105px;
+                  height: 81px;
+                  border: 1px solid black;
+                  margin: 20px auto;
+                  font-size: 10px;
+                "
+              >
+                <p style="padding-top: 25%">(Space for photograph)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer">
+          <p>Validity <br />Dated</p>
+          <p style="border-top: 1px solid black; padding-top: 5px">
+            Signature / T.I of I P
+          </p>
+          <p>Signature of B.M. with Seal</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

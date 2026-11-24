@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th,
+        td {
+            border: 1px solid #000;
+            padding: 5px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .header {
+            background-color: #d9d9d9;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .pending {
+            color: #f0ad4e;
+            border: 1px solid #f0ad4e;
+            border-radius: 10px;
+            padding: 2px 8px;
+            display: inline-block;
+        }
+        .complete {
+            color: green;
+            border: 1px solid green;
+            border-radius: 10px;
+            padding: 2px 8px;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th colspan="8" class="header">
+                Clearance Data
+            </th>
+        </tr>
+        <tr>
+            <th colspan="8">
+                Assigned Date - {{assignedDate}}
+            </th>
+        </tr>
+        <tr>
+            <th>Assigned To</th>
+            <th>Description</th>
+            <th>Applicable</th>
+            <th>Recovered</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Remarks</th>
+            <th>Task Completed Date</th>
+        </tr>
+        {{#each tasks}}
+        <tr>
+            <td>
+                {{displayName}}
+                <br />
+                {{userNumber}}
+            </td>
+            <td>{{description}}</td>
+            <td>{{isApplicable}}</td>
+            <td>{{isRecovered}}</td>
+            <td>{{amount}}</td>
+            <td>
+                {{#if isPending}}
+                <span class="pending">Pending</span>
+                {{/if}}
+                {{#if isCompleted}}
+                <span class="complete">Complete</span>
+                {{/if}}
+            </td>
+            <td>{{remarks}}</td>
+            <td>{{taskCompletedDate}}</td>
+        </tr>
+        {{/each}}
+    </table>
+</body>
+</html>

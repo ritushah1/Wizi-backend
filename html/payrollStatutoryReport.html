@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      font-size: 10px; 
+      margin: 0;
+      padding: 10px;
+    }
+    .header { 
+      text-align: center; 
+      margin-bottom: 20px; 
+    }
+    .company-name { 
+      font-size: 16px; 
+      font-weight: bold; 
+      margin-bottom: 5px;
+    }
+    .company-address { 
+      font-size: 11px; 
+      margin-bottom: 3px;
+    }
+    .company-details {
+      font-size: 10px;
+      margin-bottom: 5px;
+    }
+    .report-title { 
+      font-size: 14px; 
+      font-weight: bold; 
+      margin: 10px 0; 
+    }
+    table { 
+      width: 100%; 
+      border-collapse: collapse; 
+      margin-top: 10px; 
+    }
+    th, td { 
+      border: 1px solid #000; 
+      padding: 5px; 
+      text-align: left; 
+      font-size: 9px; 
+      vertical-align: top;
+    }
+    th { 
+      background-color: #f0f0f0; 
+      font-weight: bold; 
+      text-align: center;
+    }
+    .total-row { 
+      font-weight: bold; 
+    }
+    .employee-details { 
+      width: 150px; 
+    }
+    .attendance-col { 
+      width: 120px; 
+    }
+    .rate-wages-col {
+      width: 100px;
+    }
+    .earning-col {
+      width: 100px;
+    }
+    .deduction-col {
+      width: 100px;
+    }
+    .amount-col { 
+      text-align: right; 
+    }
+    .payhead-item {
+      margin: 2px 0;
+      display: flex;
+      justify-content: space-between;
+    }
+    .payhead-label {
+      text-align: left;
+      flex: 1;
+    }
+    .payhead-value {
+      text-align: right;
+      min-width: 50px;
+    }
+    .section-total {
+      font-weight: bold;
+      margin-top: 3px;
+      padding-top: 3px;
+      border-top: 1px solid #ccc;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="company-name">{{companyName}}</div>
+    <div class="company-address">{{companyAddress}}</div>
+    <div class="report-title">Wages/Salary Register For The Month Of {{month}}</div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>SrNo</th>
+        <th class="employee-details">Employee Details</th>
+        <th class="attendance-col">Details Of Attendance</th>
+        <th class="rate-wages-col">Rate Of Wages</th>
+        <th class="earning-col">Gross Earning</th>
+        <th class="deduction-col">Deduction</th>
+        <th>Gross Deduction</th>
+        <th>Net Payable</th>
+        <th>Signature</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each employees}}
+      <tr>
+        <td style="text-align: center;">{{add @index 1}}</td>
+        <td class="employee-details">
+          <strong>{{displayName}}</strong><br/>
+          {{employeeCode}}<br/>
+          {{designation}}<br/>
+          {{department}}<br/>
+          PF NO. {{pfNo}}<br/>
+          ESIC NO. {{esicNo}}<br/>
+          UAN NO. {{uanNo}}
+        </td>
+        <td class="attendance-col">
+          {{#each attendanceData}}
+          <div class="payhead-item">
+            <span class="payhead-label">{{@key}}:</span>
+            <span class="payhead-value">{{this}}</span>
+          </div>
+          {{/each}}
+          <div class="section-total">
+            <span class="payhead-label">TOTAL DAYS:</span>
+            <span class="payhead-value">{{paidDays}}</span>
+          </div>
+        </td>
+        <td class="rate-wages-col">
+          {{#each rateOfWages}}
+          <div class="payhead-item">
+            <span class="payhead-label">{{@key}}:</span>
+            <span class="payhead-value">{{formatNumber this}}</span>
+          </div>
+          {{/each}}
+          <div class="section-total">
+            <span class="payhead-label">TOTAL:</span>
+            <span class="payhead-value">{{formatNumber grossSalaryActual}}</span>
+          </div>
+        </td>
+        <td class="earning-col">
+          {{#each earnings}}
+          <div class="payhead-item">
+            <span class="payhead-label">{{@key}}:</span>
+            <span class="payhead-value">{{formatNumber this}}</span>
+          </div>
+          {{/each}}
+          <div class="section-total">
+            <span class="payhead-label">TOTAL:</span>
+            <span class="payhead-value">{{formatNumber grossSalary}}</span>
+          </div>
+        </td>
+        <td class="deduction-col">
+          {{#each deductions}}
+          <div class="payhead-item">
+            <span class="payhead-label">{{@key}}:</span>
+            <span class="payhead-value">{{formatNumber this}}</span>
+          </div>
+          {{/each}}
+        </td>
+        <td class="amount-col"><strong>{{formatNumber totalDeductions}}</strong></td>
+        <td class="amount-col"><strong>{{formatNumber netSalary}}</strong></td>
+        <td></td>
+      </tr>
+      {{/each}}
+      
+      <tr class="total-row">
+        <td colspan="3" style="text-align: center;"><strong>GRAND TOTAL</strong></td>
+        <td class="rate-wages-col">
+          {{#each grandTotalRateOfWages}}
+          <div class="payhead-item">
+            <span class="payhead-label">{{@key}}:</span>
+            <span class="payhead-value">{{formatNumber this}}</span>
+          </div>
+          {{/each}}
+          <div class="section-total">
+            <span class="payhead-label">TOTAL:</span>
+            <span class="payhead-value">{{formatNumber grandTotalGrossActual}}</span>
+          </div>
+        </td>
+        <td class="earning-col">
+          {{#each grandTotalEarnings}}
+          <div class="payhead-item">
+            <span class="payhead-label">{{@key}}:</span>
+            <span class="payhead-value">{{formatNumber this}}</span>
+          </div>
+          {{/each}}
+          <div class="section-total">
+            <span class="payhead-label">TOTAL:</span>
+            <span class="payhead-value">{{formatNumber grandTotalGross}}</span>
+          </div>
+        </td>
+        <td class="deduction-col">
+          {{#each grandTotalDeductions}}
+          <div class="payhead-item">
+            <span class="payhead-label">{{@key}}:</span>
+            <span class="payhead-value">{{formatNumber this}}</span>
+          </div>
+          {{/each}}
+        </td>
+        <td class="amount-col"><strong>{{formatNumber totalDeductionsSum}}</strong></td>
+        <td class="amount-col"><strong>{{formatNumber totalNetSalarySum}}</strong></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

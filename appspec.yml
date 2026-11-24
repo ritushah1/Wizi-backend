@@ -1,0 +1,11 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/www/tankhwapatra-backend
+hooks:
+  AfterInstall:
+    - location: scripts/after-install.sh
+      runas: root
+      timeout: 3000
+

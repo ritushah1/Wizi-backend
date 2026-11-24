@@ -1,0 +1,131 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Form-C Loan Register</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif !important;
+      margin: 0;
+      padding: 0;
+      font-size: 6px;
+    }
+
+    @page {
+      size: A4 landscape;
+      margin: 8px;
+    }
+
+    .company-name {
+      text-align: left;
+      font-size: 5.5px;
+      font-weight: bold;
+      margin-bottom: 2px;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 5.5px;
+      font-weight: bold;
+      margin-bottom: 3px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    thead {
+      display: table-header-group;
+    }
+
+    tr {
+      page-break-inside: avoid;
+    }
+
+    th,
+    td {
+      border: 1px solid #999;
+      padding: 1px;
+      font-size: 5.5px;
+      line-height: 7px;
+      text-align: center;
+      vertical-align: middle;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+      white-space: normal;
+    }
+
+    th {
+      background: #f2f2f2;
+      font-weight: bold;
+    }
+
+    .month-name {
+      text-align: right;
+      font-size: 7.5px;
+      font-weight: bold;
+      margin-bottom: 2px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="company-name">{{companyName}}</div>
+  <div class="month-name">Month:- {{month}}</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th colspan="{{headers.length}}" style="font-size:8px;text-align:center;">
+          Form-C
+        </th>
+      </tr>
+      <tr>
+        <th colspan="{{headers.length}}" style="font-size:8px;text-align:center;">
+          Format Of Register Of Loan/Recoveries
+        </th>
+      </tr>
+      <tr>
+        <th colspan="{{headers.length}}" style="font-size:6px;text-align:left;">
+          Name of Establishment : {{companyName}}
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          Name of Owner : {{ownerName}}
+        </th>
+      </tr>
+      <tr>
+        {{#each headers}}
+        <th>{{this}}</th>
+        {{/each}}
+      </tr>
+    </thead>
+
+    <tbody>
+      {{#each userData}}
+      <tr>
+        {{#forIn this}}
+        <td>
+          {{#if (lookup ../this "Photo")}}
+          {{#if (eq key "Photo")}}
+          <img src="data:image/jpeg;base64,{{value}}" style="width:30px;height:35px;object-fit:cover;" />
+          {{else}}
+          {{value}}
+          {{/if}}
+          {{else}}
+          {{value}}
+          {{/if}}
+        </td>
+        {{/forIn}}
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</body>
+
+</html>

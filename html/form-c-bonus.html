@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form C</title>
+
+    <style>
+        .container {
+            margin: auto;
+            max-width: 1000px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            display: table-row-group;
+            /* Prevent repeat on every page */
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            font-size: 11px;
+            padding: 4px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .mt-20 {
+            margin-top: 20px;
+        }
+
+        .m-0 {
+            margin: 0;
+        }
+
+        table {
+            page-break-inside: auto;
+        }
+
+        table tr {
+            page-break-inside: avoid;
+        }
+
+        table td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-inside: avoid !important;
+        }
+
+        .no-border,
+        .no-border th,
+        .no-border td {
+            border: none !important;
+        }
+
+        tbody tr:last-child td {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <table class="no-border">
+            <thead>
+                <tr>
+                    <th colspan="17" class="text-center" style="font-size: 24px;">
+                        <b>FORM C</b>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td colspan="17" class="text-center">
+                        [Rule 4(D)]
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="17" class="text-center">
+                        {{reportHeading}} <b>{{reportYear}}</b>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="17">
+                        Name of the establishment: <b>{{companyName}}</b>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="17">
+                        No. of working days:
+                    </td>
+                </tr>
+            </thead>
+        </table>
+
+        <!-- MAIN TABLE -->
+        <div class="mt-20">
+            <table>
+
+                <!-- HEADER -->
+                <thead>
+                    <tr>
+                        <th rowspan="2">Sl No</th>
+                        <th rowspan="2">Name of the Employee</th>
+                        <th rowspan="2">Father Name</th>
+                        <th rowspan="2">Whether he has completed 15 years of age at the beginning of the accounting
+                            {{#if isMonthly}}month{{else}}year{{/if}}</th>
+                        <th rowspan="2">Designation</th>
+                        <th rowspan="2">No. of days worked in the {{#if isMonthly}}month{{else}}year{{/if}}</th>
+                        <th rowspan="2">Total salary or wage in respect of the accounting {{#if
+                            isMonthly}}month{{else}}year{{/if}}</th>
+                        <th rowspan="2">Amount of bonus payable under section 10 or section 11 as the case may be</th>
+                        <th colspan="5">Deductions</th>
+                        <th rowspan="2">Net Amount Payable (Column 8 minus Column 12)</th>
+                        <th rowspan="2">Amount actually paid</th>
+                        <th rowspan="2">Month in which paid</th>
+                        <th rowspan="2">Signature/thumb impression of the employee</th>
+                    </tr>
+
+                    <tr>
+                        <th>Puja bonus or other customary bonus during the accounting {{#if
+                            isMonthly}}month{{else}}year{{/if}}</th>
+                        <th>Interim bonus of bonus paid advance</th>
+                        <th>[Amount of income-tax deducted]</th>
+                        <th>Deduction on account of financial loss, if any, caused by misconduct of employee</th>
+                        <th>[Total sum deducted under columns 9, 10, 10A and 11]</th>
+                    </tr>
+
+                    <tr>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                        <th>8</th>
+                        <th>9</th>
+                        <th>10</th>
+                        <th>10A</th>
+                        <th>11</th>
+                        <th>12</th>
+                        <th>13</th>
+                        <th>14</th>
+                        <th>15</th>
+                        <th>16</th>
+
+                    </tr>
+                </thead>
+
+                <!-- BODY -->
+                <tbody>
+                    {{#each employeeData}}
+                    <tr>
+                        <td class="text-center">{{srNo}}</td>
+                        <td>{{employeeName}}</td>
+                        <td>{{fatherName}}</td>
+                        <td class="text-center">{{age_15_years}}</td>
+                        <td>{{designation}}</td>
+                        <td class="text-right">{{paidDays}}</td>
+                        <td class="text-right">{{totalSalary}}</td>
+                        <td class="text-right">{{bonusPayable}}</td>
+                        <td class="text-right">&nbsp;</td>
+                        <td class="text-right">&nbsp;</td>
+                        <td class="text-right">&nbsp;</td>
+                        <td class="text-right">&nbsp;</td>
+                        <td class="text-right">&nbsp;</td>
+                        <td class="text-right">{{netAmountPayable}}</td>
+                        <td class="text-right">{{paidBonus}}</td>
+                        <td class="text-center">{{paidMonth}}</td>
+                        <td></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

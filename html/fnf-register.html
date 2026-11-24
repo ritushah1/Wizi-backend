@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Full & Final Settlement Register</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 9px;
+      padding: 20px;
+      color: #000;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    
+    .header h1 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+    
+    .header h2 {
+      font-size: 14px;
+      font-weight: normal;
+      color: #333;
+    }
+    
+    .report-info {
+      margin-bottom: 15px;
+      font-size: 10px;
+    }
+    
+    .report-info span {
+      font-weight: bold;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    
+    th, td {
+      border: 1px solid #000;
+      padding: 6px 4px;
+      text-align: left;
+      vertical-align: middle;
+    }
+    
+    th {
+      background-color: #d3d3d3;
+      font-weight: bold;
+      text-align: center;
+      font-size: 9px;
+      line-height: 1.2;
+    }
+    
+    td {
+      font-size: 8px;
+    }
+    
+    .text-right {
+      text-align: right;
+    }
+    
+    .text-center {
+      text-align: center;
+    }
+    
+    .total-row {
+      font-weight: bold;
+      background-color: #e8e8e8;
+      font-size: 9px;
+    }
+    
+    .total-row td {
+      font-weight: bold;
+    }
+    
+    .sno-col {
+      width: 30px;
+      text-align: center;
+    }
+    
+    .code-col {
+      width: 80px;
+    }
+    
+    .name-col {
+      width: 120px;
+    }
+    
+    .gender-col {
+      width: 40px;
+      text-align: center;
+    }
+    
+    .designation-col {
+      width: 100px;
+    }
+    
+    .skill-col {
+      width: 80px;
+    }
+    
+    .date-col {
+      width: 80px;
+      text-align: center;
+    }
+    
+    .numeric-col {
+      width: 60px;
+      /* text-align: right; */
+    }
+    
+    .leave-detail-col {
+      width: 80px;
+      font-size: 8px;
+      white-space: pre-line;
+    }
+    
+    .signature-col {
+      width: 80px;
+    }
+    
+    @media print {
+      body {
+        padding: 10px;
+      }
+      
+      .page-break {
+        page-break-after: always;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Full & Final Register</h1>
+    <h2>For the Month of {{month}}</h2>
+  </div>
+  
+  <table>
+    <thead>
+      <tr>
+        <th class="sno-col">S.No</th>
+        <th class="code-col">Employee Code</th>
+        <th class="name-col">Employee Name</th>
+        <th class="gender-col">Gender</th>
+        <th class="designation-col">Designation</th>
+        <th class="skill-col">Skill Set</th>
+        <th class="date-col">Date Of<br>Joining</th>
+        <th class="date-col">Date Of<br>Leaving</th>
+        <th class="numeric-col">Total<br>Working<br>Days</th>
+        <th class="numeric-col">Leave<br>Balance<br>Added</th>
+        <th class="numeric-col">No. Of<br>Leave<br>Taken</th>
+        <th class="leave-detail-col">Leave Balance Paid</th>
+        <th class="leave-detail-col">Rate Per Day</th>
+        <th class="numeric-col">Leave Encash<br>Amount</th>
+        <th class="numeric-col">Bonus Amount</th>
+        <th class="numeric-col">Total F&F<br>Amount</th>
+        <th class="signature-col">Signature</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each data}}
+      <tr>
+        <td class="sno-col text-center">{{add @index 1}}</td>
+        <td class="code-col">{{this.[Employee Code]}}</td>
+        <td class="name-col">{{this.[Employee Name]}}</td>
+        <td class="gender-col text-center">{{this.Gender}}</td>
+        <td class="designation-col">{{this.Desigantion}}</td>
+        <td class="skill-col">{{this.[Skill Set]}}</td>
+        <td class="date-col text-center">{{this.[Date Of Joining]}}</td>
+        <td class="date-col text-center">{{this.[Date Of Leaving]}}</td>
+        <td class="numeric-col text-right">{{this.[Total Working Days]}}</td>
+        <td class="numeric-col text-right">{{this.[Leave Balance Added]}}</td>
+        <td class="numeric-col text-right">{{this.[No. Of Leave Taken]}}</td>
+        <td class="leave-detail-col">{{this.[Leave Balance Paid]}}</td>
+        <td class="leave-detail-col">{{this.[Rate Per Day]}}</td>
+        <td class="numeric-col text-right">{{this.[Leave Encash Amount]}}</td>
+        <td class="numeric-col text-right">{{this.[Bonus Amount]}}</td>
+        <td class="numeric-col text-right">{{this.[Total F&F Amount]}}</td>
+        <td class="signature-col"></td>
+      </tr>
+      {{/each}}
+      
+      <!-- Total Row -->
+      <tr class="total-row">
+        <td colspan="8" class="text-right" style="padding-right: 10px;">TOTAL:</td>
+        <td class="numeric-col text-right">{{totals.totalWorkingDays}}</td>
+        <td class="numeric-col text-right">{{totals.totalLeaveBalanceAdded}}</td>
+        <td class="numeric-col text-right">{{totals.totalLeaveTaken}}</td>
+        <td class="leave-detail-col">{{totals.balancedLeavePaidTotal}}</td>
+        <td class="leave-detail-col"></td>
+        <td class="numeric-col text-right">{{totals.totalLeaveEncashAmount}}</td>
+        <td class="numeric-col text-right">{{totals.totalBonusAmount}}</td>
+        <td class="numeric-col text-right">{{totals.totalFNFAmount}}</td>
+        <td class="signature-col"></td>
+      </tr>
+    </tbody>
+  </table>
+  
+</body>
+</html>

@@ -1,0 +1,205 @@
+<html lang="en">
+
+<head>
+  <title>Invoice</title>
+
+  <style>
+    .container {
+      border: 1px solid black;
+      width: 736px;
+      margin: 40px auto;
+    }
+
+    .flex {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .left-box {
+      width: 40%;
+      font-size: 12px;
+      padding: 6px;
+      line-height: 18px;
+    }
+
+    .right-box {
+      width: 30%;
+      font-size: 12px;
+      padding: 6px;
+      text-align: right;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      border-left: none;
+    }
+
+    th,
+    td {
+      border: 1px solid black;
+      font-size: 12px;
+      padding: 6px;
+      letter-spacing: 1px;
+    }
+
+    th:first-child,
+    td:first-child {
+      border-left: none;
+    }
+
+    th:last-child,
+    td:last-child {
+      border-right: none;
+    }
+
+    .no-bottom-border {
+      border-bottom: none;
+    }
+
+    .signature {
+      display: flex;
+      align-items: center;
+      justify-content: left;
+      height: 60px;
+    }
+
+    .signature img {
+      max-width: 120px;
+      max-height: 50px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- Header -->
+    <div class="flex">
+
+      <div class="left-box">
+        <b>{{employeename}}</b><br>
+        {{employeeAddress}}<br>
+        {{empMobileNo}}<br>
+        {{empEmail}}<br>
+        {{pancard}}
+      </div>
+
+      <div class="right-box">
+        <b style="font-size:16px">INVOICE</b><br><br>
+        <b># {{invoiceNo}}</b>
+      </div>
+
+    </div>
+
+    <div class="flex">
+
+      <div class="left-box">
+        <b>Bill To</b><br>
+        <b>{{companyname}}</b><br>
+        {{companyaddress}}<br>
+        {{companyMobileNo}}<br>
+        {{companyEmail}}
+      </div>
+
+      <div class="right-box">
+        <b>Invoice Date:</b> {{invoiceDate}}<br>
+        <b>Billing Period:</b> {{billingPeriod}}
+      </div>
+
+    </div>
+
+    <!-- Table -->
+    <table>
+
+      <tr>
+        <th style="width:5%">Sr No</th>
+        <th style="width:30%">Task and Description</th>
+        <th style="width:15%">Qty/Hours</th>
+        <th style="width:20%">Price</th>
+        <th style="width:15%">Total</th>
+      </tr>
+
+      {{#each allEarnings}}
+      <tr>
+        <td>{{inc @index}}</td>
+        <td>{{this.payheadName}}</td>
+        <td>{{../payableDays}}</td>
+        <td>{{this.actualamount}}</td>
+        <td>{{this.employeeAmount}}</td>
+      </tr>
+      {{/each}}
+
+      <tr>
+        <td colspan="3"></td>
+        <td><b>Subtotal</b></td>
+        <td><b>{{totalearning}}</b></td>
+      </tr>
+
+      {{#each deduction}}
+      <tr>
+        <td colspan="3"></td>
+        <td>{{this.payheadName}}</td>
+        <td>{{this.employeeAmount}}</td>
+      </tr>
+      {{/each}}
+
+      <tr>
+        <td colspan="3"></td>
+        <td><b>Amount Due</b></td>
+        <td><b>{{nettotal}}</b></td>
+      </tr>
+
+      <tr>
+        <td colspan="5">
+          <b>Total Amount in Words:</b> {{numbertext}}
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="5">
+          <b>Notes / Terms:</b> {{salaryCalRemark}}
+        </td>
+      </tr>
+
+      <tr>
+
+        <td colspan="3">
+          <b>Payment Details</b><br>
+          Bank Name: {{userbankName}}<br>
+          Account Holder: {{nameAsBank}}<br>
+          Account Number: {{userbankAccountNo}}<br>
+          IFSC Code: {{bankIFSC}}<br>
+          PAN No: {{pancard}}
+        </td>
+
+        <td colspan="2">
+          Authorized Signature<br>
+
+          <div class="signature">
+            {{#if employeeSignature}}
+            <img src="{{ApiURL}}uploads/user/signature/{{employeeSignature}}">
+            {{/if}}
+          </div>
+
+          Name: {{employeename}}<br>
+          Date: {{slaceFormatCurrentDate}}
+        </td>
+
+      </tr>
+
+      <tr>
+        <td colspan="5" class="no-bottom-border">
+          <b>*THIS IS COMPUTER GENERATED INVOICE. NO SIGNATURE REQUIRED</b>
+        </td>
+      </tr>
+
+    </table>
+
+  </div>
+
+</body>
+
+</html>

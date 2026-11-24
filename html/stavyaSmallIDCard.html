@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stavya Spine Hospital - ID Card</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+        }
+
+        .containerMain {
+            width: 305px;
+            height: 470px;
+            max-width: 305px !important;
+            max-height: 470px !important;
+            position: relative;
+            overflow: hidden;
+            margin: 10px !important;
+        }
+
+        .id-card {
+            width: 305px;
+            height: 470px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            padding-inline: 10px !important;
+        }
+
+        .bg {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: 0;
+            width: 305px;
+            height: 470px;
+        }
+
+        .bg img {
+            width: 305px;
+            height: 470px;
+        }
+
+        .id-card > *:not(.bg) {
+            position: relative;
+            z-index: 1;
+        }
+
+        .id-header {
+            text-align: center;
+            background: white;
+            width: 80px;
+            height: 60px;
+            margin-block: 10px;
+            margin-inline: auto;
+        }
+
+        .w-full {
+            width: 100%;
+        }
+
+        .mt-5 {
+            margin-top: 5px;
+        }
+
+        .mt-10 {
+            margin-top: 10px;
+        }
+
+        .mt-15 {
+            margin-top: 15px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .justify-content-center {
+            justify-content: center;
+        }
+
+        .m-auto {
+            margin: auto !important;
+        }
+
+        .companyLogo {
+            object-fit: content;
+            background: transparent;
+            border-radius: 15px;
+            width: auto;
+            height: 40px !important;
+            mix-blend-mode: darken;
+        }
+
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            width: 150px;
+            height: 150px;
+            border-radius: 16px;
+            background: white !important;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: auto !important;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 16px;
+            object-fit: content;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background: white !important;
+        }
+
+        .blue-section {
+            margin-top: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        .employee-name {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .department {
+            font-size: 16px;
+            color: #FFC233;
+            margin-top: 2px;
+        }
+
+        .designation {
+            font-size: 16px;
+            color: #FFC233;
+            margin-top: 2px;
+        }
+
+        .info-section {
+            margin-top: 5px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+
+        .text-white {
+            color: #CFE6F7 !important;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        .fw-500 {
+            font-weight: 500;
+        }
+
+        .pl-10 {
+            padding-left: 10px;
+        }
+
+        .emergency {
+            font-size: 14px;
+            color: #FFC233;
+        }
+
+        .mt-5px{
+            margin-top: 5px;
+        }
+
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            /* .containerMain {
+                width: 303px !important;
+                max-width: 303px !important;
+            } */
+
+            @page {
+                margin: 0px 0px !important;
+            }
+
+            .id-card {
+                page-break-inside: avoid;
+            }
+
+            .bg, .bg img {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+
+        .col-4 {
+            position: relative;
+            page-break-inside: avoid !important;
+        }
+    </style>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="row p-0">
+        {{#each tempData}}
+        <div class="col-4 p-0">
+            <div class="containerMain">
+                <div class="id-card">
+                    <div class="bg">
+                        <img src="{{this.ApiURL}}css/assets/stavyaBG.jpg" alt="">
+                    </div>
+
+                    <div class="w-full mt-5">
+                        {{#if this.idCardData.companyLogo}}
+                        <div class="text-center d-flex justify-content-center">
+                            <img class="companyLogo m-auto"
+                                src="{{this.ApiURL}}uploads/company/logo/{{ this.idCardData.companyLogo }}" />
+                        </div>
+                        {{/if}}
+                    </div>
+
+                    <div class="profile-container mt-10">
+                        <img class="profile-image" src="{{this.ApiURL}}uploads/user/photo/{{ this.idCardData.userPhoto }}" alt="" />
+                    </div>
+
+                    <div class="blue-section">
+                        <div class="employee-name">{{displayName}}</div>
+                        <div class="department">{{ this.idCardData.departmentName }}</div>
+                        <div class="designation">{{ this.idCardData.designationName }}</div>
+
+                        <div class="info-section">
+                            <div class="info-row">
+                                <div class="text-white text-left w-full">Date of expiry</div>
+                                <div class="text-white text-left">:</div>
+                                <div class="text-white text-left w-full fw-500 pl-10">{{this.idCardData.joiningDate}}</div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="text-white text-left w-full">Blood group</div>
+                                <div class="text-white text-left">:</div>
+                                <div class="text-white text-left w-full fw-500 pl-10">{{this.idCardData.bloodgroup}}</div>
+                            </div>
+                        </div>
+
+                        <div class="emergency mt-5px">
+                            Emergency Contact No.
+                        </div>
+                        <div class="emergency text-white">
+                            <span class="text-white">{{this.idCardData.otherContactNumber}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</body>
+
+</html>

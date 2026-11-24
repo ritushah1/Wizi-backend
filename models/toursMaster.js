@@ -1,0 +1,121 @@
+const Sequelize = require('sequelize');
+const sequelize = require('../config/database');
+const UserMaster = require('./userMaster');
+const CompanyMaster = require('./companyMaster');
+const AuthorizationCriteriaMaster = require('./authorizationCriteriaMaster');
+
+const table_name = 'ToursMaster';
+
+const toursMaster = sequelize.define(table_name, {
+  ToursMasterID: {
+    type: Sequelize.BIGINT,
+    allowNull: false,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  ToursName: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
+  FromDate: {
+    type: Sequelize.DATEONLY,
+    allowNull: true,
+  },
+  ToDate: {
+    type: Sequelize.DATEONLY,
+    allowNull: true,
+  },
+  TotalDays: {
+    type: Sequelize.DECIMAL,
+    allowNull: true,
+  },
+  CoPersonId: {
+    type: Sequelize.ARRAY(Sequelize.BIGINT),
+    allowNull: true,
+  },
+  Description: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
+  UserMasterID: {
+    type: Sequelize.BIGINT,
+    allowNull: true,
+  },
+  authorizationStatus: {
+    type: Sequelize.BIGINT,
+    allowNull: true,
+    defaultValue: 3, // Approved
+  },
+  status: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    defaultValue: 1,
+  },
+  createBy: {
+    type: Sequelize.BIGINT,
+    allowNull: false,
+  },
+  createByIp: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
+  updateBy: {
+    type: Sequelize.BIGINT,
+    allowNull: true,
+  },
+  updateByIp: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
+  authorizedBy: {
+    type: Sequelize.BIGINT,
+    allowNull: true,
+  },
+  authorizedAt: {
+    type: Sequelize.DATE,
+    allowNull: true,
+  },
+  isAuthorizedBy: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
+  },
+  authorizerRemark: {
+    type: Sequelize.TEXT,
+    allowNull: true,
+  },
+  rejectionremarks: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
+  AuthorizationCriteriaID: {
+    type: Sequelize.BIGINT,
+    allowNull: true,
+  },
+});
+
+toursMaster.belongsTo(UserMaster, {
+  as: 'assign',
+  foreignKey: { name: 'UserMasterID' },
+});
+
+toursMaster.belongsTo(UserMaster, {
+  as: 'createByUser',
+  foreignKey: { name: 'createBy' },
+});
+
+toursMaster.belongsTo(UserMaster, {
+  as: 'updateByUser',
+  foreignKey: { name: 'updateBy' },
+});
+
+toursMaster.belongsTo(UserMaster, {
+  as: 'authorizer',
+  foreignKey: 'authorizedBy',
+});
+
+toursMaster.belongsTo(AuthorizationCriteriaMaster, {
+  foreignKey: { name: 'AuthorizationCriteriaID' },
+});
+
+module.exports = toursMaster;

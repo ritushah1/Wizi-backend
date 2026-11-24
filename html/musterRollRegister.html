@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM XVI</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .container {
+            padding: 10px;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .justify-content-end {
+            justify-content: end;
+        }
+
+        .m-0 {
+            margin: 0px;
+        }
+
+        .mt-5 {
+            margin-top: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 0.3px solid rgb(78, 78, 78);
+            padding: 3px 2px;
+            font-size: 10px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .font {
+
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h4 class="text-center font">{{headingFirstRow}}</h4>
+        <h4 class="text-center font">{{headingSecondRow}}</h4>
+        <h4 class="text-center font">{{headingThirdRow}}</h4>
+
+        <div class="d-flex justify-content-end font">
+            <b>Month: {{month}}</b>
+        </div>
+        <div class="mt-5 font">
+            <b>Name and Address of Company : {{companyName}}</b>
+            <p class="m-0">{{companyAddress}}</p>
+        </div>
+        <div class="mt-5">
+            <table  class="text-center">
+                <thead>
+                    <tr>
+                        {{#each tableHeaders}}
+                        <th>{{this}}</th>
+                        {{/each}}
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each tableData}}
+                    <tr>
+                        <!-- Static Columns -->
+                        <td>{{srNo}}</td>
+                        <td>{{employeeCode}}</td>
+                        <td>{{displayName}}</td>
+                        <td>{{designation}}</td>
+                        <td>{{gender}}</td>
+                        <td>{{dateOfBirth}}</td>
+                        <td>{{dateOfJoining}}</td>
+                        <!-- Day Wise Status -->
+                        {{#each allDayAttendanceStatus}}
+                        <td>{{this}}</td>
+                        {{/each}}
+                        <!-- Summary Columns -->
+                        <td>{{actualWorkingDays}}</td>
+                        <td>{{absentCount}}</td>
+                        <td>{{weekOffCount}}</td>
+                        <td>{{holidayCount}}</td>
+                        <td>{{paidDaysCount}}</td>
+                        <!-- Leave Columns -->
+                        {{#each leave}}
+                        <td>{{this}}</td>
+                        {{/each}}
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

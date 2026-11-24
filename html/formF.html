@@ -1,0 +1,389 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>FORM F</title>
+    <style>
+      /* body {
+        font-family: Arial, sans-serif;
+        font-size: 11px;
+        border: 1px solid black;
+      } */
+
+      p {
+        margin: 0px;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 11px;
+        margin: 0;
+        padding: 0;
+      }
+
+      @media print {
+        body::after {
+          content: '';
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border: 1px solid black;
+          box-sizing: border-box;
+          pointer-events: none;
+        }
+      }
+
+      .no-side-border {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      .no-side-border th,
+      .no-side-border td {
+        border: 1px solid #616161;
+        padding: 5px;
+        text-align: center;
+      }
+
+      .no-side-border th:first-child,
+      .no-side-border td:first-child {
+        border-left: none;
+      }
+
+      .no-side-border th:last-child,
+      .no-side-border td:last-child {
+        border-right: none;
+      }
+
+      .page-break {
+        page-break-after: always;
+      }
+
+      .bottom {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .centerData {
+        text-align: center;
+        margin: 10px;
+        font-style: italic;
+        font-weight: 600;
+      }
+
+      .secondPageData p {
+        padding: 10px 0px;
+      }
+
+      .centerAndFlex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .secondPageFirst {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .addressData {
+        width: 33%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div style="min-height: 1030px">
+        <div style="padding: 20px">
+          <div>
+            <p style="text-align: center">The Payment of Grauity Act 1972</p>
+            <p style="text-align: center; font-size: 13px">
+              <b>F O R M 'F'</b>
+            </p>
+            <p style="text-align: center">[ See sub - rule (1) of rule (6) ]</p>
+            <p style="text-align: center; font-size: 13px">NOMINATION</p>
+          </div>
+
+          <div style="display: flex">
+            <div>To,</div>
+            <div style="margin-left: 5px">
+              <p style="margin-top: 16px"><b>{{companyName}}</b></p>
+              <p style="width: 70%">
+                {{companyAddress}}, {{companyAddressCity}},
+                {{companyAddressState}}, {{companyAddressCountry}}
+              </p>
+            </div>
+          </div>
+          <br />
+          <br />
+          <div>
+            1. Mr/Mrs./Ms. <b>{{displayName}}</b> <br /><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Whose particulars are given in the statement below, hereby nominate the
+            person(s) mentioned below to receive the gratuity payable after my
+            death as also the gratuity standing to my credit in the event of my
+            death before the amount has become payable, or having become payable
+            has not been paid and direct that the said amount of gratuity shall
+            be paid in Proportion indicated against the name(s) of the nominee(s).
+          </div>
+          <br />
+          <div>
+            2. I hereby certify that the person(s) mentioned is a/are member(s)
+            of my family within the meaning of clause (h) of section (2) of
+            Payment of Gratuity Act, 1972.
+          </div>
+          <br />
+          <div>
+            3. I hereby declare that I have no family within the meaning of
+            clause (h) of section (2) of the said Act.
+          </div>
+          <br />
+          <div>4. (a) My father/mother/parents is/are not dependent on me.</div>
+          <br />
+          <div>
+            4. (b) My husband's father/mother/parents is/are not dependent on my
+            husband.
+          </div>
+          <br />
+          <div>
+            5.I have excluded my husband from my family by a notice dated
+            the to the controlling authority in terms of the proviso to
+            clause (h) of section 2 of the said Act.
+          </div>
+          <br />
+          <div>
+            6. Nomination made herein invalidates my previous nomination.
+          </div>
+        </div>
+        <div style="text-align: center"><b>Nominee(s)</b></div>
+        <br />
+        <div>
+          <table
+            class="no-side-border"
+            style="width: 100%; border-collapse: collapse"
+          >
+            <tr>
+              <td colspan="2" style="width: 50%; height: 35px">
+                Name in full with full address of the nominee(s)
+              </td>
+              <td style="width: 20%">Relationship with the Employee</td>
+              <td style="width: 20%">Age of nominee</td>
+              <td style="width: 10%">
+                Proportion by which the gratuity will be shared
+              </td>
+            </tr>
+
+            <!-- <tr>
+              <td colspan="2">1</td>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+            </tr> -->
+
+            {{#if nominees.length}} {{#each nominees}}
+            <tr>
+              <td style="vertical-align: top; width: 25%">{{memberName}}</td>
+              <td style="vertical-align: top"></td>
+              <td style="vertical-align: top">{{relation}}</td>
+              <td style="vertical-align: top">{{formatDate dob}}</td>
+              <td style="vertical-align: top">{{percentForNominee}}%</td>
+            </tr>
+            {{/each}} {{else}}
+            <tr style="height: 20px">
+              <td style="vertical-align: top; width: 25%; text-align: left">
+                1.
+              </td>
+              <td style="vertical-align: top"></td>
+              <td style="vertical-align: top"></td>
+              <td style="vertical-align: top"></td>
+              <td style="vertical-align: top"></td>
+            </tr>
+            <tr style="height: 20px">
+              <td style="vertical-align: top; width: 25%; text-align: left">
+                2.
+              </td>
+              <td style="vertical-align: top"></td>
+              <td style="vertical-align: top"></td>
+              <td style="vertical-align: top"></td>
+              <td style="vertical-align: top"></td>
+            </tr>
+            <tr style="height: 20px">
+              <td style="vertical-align: top; width: 25%; text-align: left">
+                3.
+              </td>
+              <td style="vertical-align: top"></td>
+              <td style="vertical-align: top"></td>
+              <td style="vertical-align: top"></td>
+              <td style="vertical-align: top"></td>
+            </tr>
+            {{/if}}
+          </table>
+
+          <div style="padding: 20px">
+            <div>
+              <table style="width: 100%; border-collapse: collapse">
+                <tr>
+                  <td style="width: 40%; padding: 6px">
+                    1. Name of employee in full:
+                  </td>
+                  <td style="padding: 6px"><b>{{displayName}}</b></td>
+                </tr>
+                <tr>
+                  <td style="padding: 6px">2. Sex:</td>
+                  <td style="padding: 6px">{{gender}}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 6px">3. Religion:</td>
+                  <td style="padding: 6px">{{religion}}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 6px">
+                    4. Whether unmarried / married / widow / widower:
+                  </td>
+                  <td style="padding: 6px"></td>
+                </tr>
+                <tr>
+                  <td style="padding: 6px">
+                    5. Department / Branch / Section where employed:
+                  </td>
+                  <td style="padding: 6px">{{ department}} / {{ branch}}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 6px">
+                    6. Post held with Ticket or Serial No (if any):
+                  </td>
+                  <td style="padding: 6px"></td>
+                </tr>
+                <tr>
+                  <td style="padding: 6px">7. Date of appointment:</td>
+                  <td style="padding: 6px">{{formatDate joiningDate}}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 6px; vertical-align: top">
+                    8. Permanent address:
+                  </td>
+                  <td style="padding: 6px">
+                    {{formatAddress permanentAddressHouseNumber
+                    permanentAddressLandmark}}<br />
+                    {{formatAddress permanentAddressCity permanentAddressState
+                    permanentAddressCountry}}
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div style="padding: 20px; padding-top: 0px">
+        <footer>
+          <div class="bottom">
+            <p>Place</p>
+            <p>Date</p>
+            <p>Signature or thumb impresion of the Employee</p>
+          </div>
+        </footer>
+      </div> -->
+      <div style="padding: 20px" class="secondPageData">
+        <div>
+          <div class="secondPageFirst">
+            <p class="addressData">Village:</p>
+            <p class="addressData">Thana:</p>
+            <p class="addressData">Sub-division:</p>
+          </div>
+          <div class="secondPageFirst">
+            <p class="addressData">Post Office:</p>
+            <p class="addressData">District:</p>
+            <p class="addressData">State: {{permanentAddressState}}</p>
+          </div>
+        </div>
+
+        <div class="centerAndFlex" style="margin-top: 15px">
+          <div>
+            <p>Place: {{place}}</p>
+            <p>Date: {{date}}</p>
+          </div>
+          <div><p>Signature/Thumb impression of the employee</p>
+          {{#if employeeAuthorizedSignature}}
+            <img
+              src="{{employeeAuthorizedSignature}}"
+              style="height: 60px; margin-top: 5px;"
+            />
+          {{/if}}
+        </div>
+        </div>
+        <div>
+          <p class="centerData">Declaration by witnesses</p>
+          <p>Nomination signed/thumb impressed before me.</p>
+        </div>
+
+        <div>
+          <table>
+            <tr>
+              <td style="width: 50vw">
+                Name in full and full address of witnesses.
+              </td>
+              <td>Signature of witnesses</td>
+            </tr>
+            <tr>
+              <td>1.</td>
+              <td>1.</td>
+            </tr>
+            <tr>
+              <td>2.</td>
+              <td>2.</td>
+            </tr>
+          </table>
+
+          <div>
+            <p>Place</p>
+            <p>Date</p>
+          </div>
+        </div>
+
+        <div>
+          <p class="centerData">Certificate by the Employer</p>
+          <p>
+            Certified that the particulars of the above nomination have been
+            verified and recorded in this establishment.
+          </p>
+          <p>Employer's Reference No., if any.</p>
+        </div>
+        <div class="centerAndFlex">
+          <div>Date</div>
+          <div>
+            <p>Signature of the employer/officer authorised</p>
+             {{#if companyAuthorizedSignature}}
+                <img
+                  src="{{companyAuthorizedSignature}}"
+                  style="height: 60px; margin-top: 5px;"
+                />
+              {{/if}}
+            <p>Designation</p>
+            <p>Name and address of the establishment or rubber stamp therof.</p>
+          </div>
+        </div>
+        <div>
+          <p class="centerData">Acknowledgment by the employee</p>
+          <p>
+            Received the duplicate copy of nomination in form 'F' filed by me
+            and duly certified by the employer.
+          </p>
+        </div>
+        <div class="bottom">
+          <p>Date</p>
+          <p>Signature of the employee
+            <br>
+            {{#if employeeAuthorizedSignature}}
+            <img
+              src="{{employeeAuthorizedSignature}}"
+              style="height: 60px; margin-top: 5px;"
+            />
+          {{/if}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

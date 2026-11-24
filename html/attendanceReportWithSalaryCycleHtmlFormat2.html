@@ -1,0 +1,236 @@
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="./bootstrap.css" />
+  <title>Monthly Attendance Register</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif !important;
+    }
+
+    @page {
+      margin: 15px 15px 40px 15px !important;
+    }
+
+    .employee-page {
+      page-break-after: always;
+      margin-bottom: 20px;
+    }
+
+    .employee-page:last-child {
+      page-break-after: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid rgb(189, 189, 189);
+    }
+
+    thead {
+      display: table-header-group;
+    }
+
+    tr {
+      page-break-inside: avoid !important;
+    }
+
+    th,
+    td {
+      border: 1px solid rgb(189, 189, 189);
+      font-size: 7px;
+      padding: 2px;
+      line-height: 9px;
+      white-space: normal;
+      word-break: break-word;
+      text-align: center;
+    }
+
+    .report-title {
+      font-size: 14px;
+      font-weight: bold;
+      padding: 6px;
+      text-align: center;
+    }
+
+    .report-subtitle {
+      font-size: 10px;
+      font-weight: bold;
+      padding: 4px;
+      text-align: center;
+    }
+
+    .employee-info {
+      font-size: 8px;
+      font-weight: bold;
+      padding: 5px;
+      line-height: 12px;
+      text-align: left;
+    }
+
+    .summary-row td {
+      font-weight: bold;
+      background-color: #f1f1f1;
+    }
+
+    @media print {
+      .employee-page {
+        page-break-after: always;
+      }
+
+      .employee-page:last-child {
+        page-break-after: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  {{#each salaryCycles}}
+  {{#each this.users}}
+
+  <div class="employee-page">
+    <table>
+      <thead>
+        <tr>
+          <th colspan="{{../../headers.length}}" class="report-title">
+            Monthly Attendance Register
+          </th>
+        </tr>
+
+        <tr>
+          <th colspan="{{../../headers.length}}" class="report-subtitle">
+            From Date: {{../formatted_start_date}} &nbsp;&nbsp; To Date: {{../formatted_end_date}}
+          </th>
+        </tr>
+      </thead>
+    </table>
+    <table>
+      <thead>
+
+        <!-- Row 1 -->
+        <tr>
+          <th colspan="8" class="user-details-heading">
+            User Details
+          </th>
+        </tr>
+
+        <!-- Row 2 -->
+        <tr>
+          <th>Employee Code</th>
+          <th>Employee Name</th>
+          <th>Employee Number</th>
+          <th>Branch</th>
+          <th>Department</th>
+          <th>Designation</th>
+          <th>Division</th>
+          <th>Working Area</th>
+        </tr>
+
+        <!-- Row 3 -->
+        <tr>
+          <td>{{this.userData.employeeCode}}</td>
+          <td>{{this.userData.displayName}}</td>
+          <td>{{this.userData.userNumber}}</td>
+          <td>{{this.userData.branch}}</td>
+          <td>{{this.userData.department}}</td>
+          <td>{{this.userData.designation}}</td>
+          <td>{{this.userData.division}}</td>
+          <td>{{this.userData.workingArea}}</td>
+        </tr>
+
+      </thead>
+    </table>
+    <table>
+      <tbody>
+
+        <!-- Attendance Details Heading -->
+        <tr>
+          <th colspan="{{../../attendanceDetailsColspan}}" class="attendance-details-heading">
+            Attendance Details
+          </th>
+        </tr>
+
+        <!-- Header Row -->
+        <tr>
+          <th></th>
+          {{#each ../../headers}}
+          <th>{{this}}</th>
+          {{/each}}
+        </tr>
+
+        <!-- Attendance Rows -->
+        {{#each this.rows}}
+        <tr>
+          {{#each this}}
+          <td>{{this}}</td>
+          {{/each}}
+        </tr>
+        {{/each}}
+
+      </tbody>
+    </table>
+    <table>
+      <tbody>
+
+        <!-- Row 1 -->
+        <tr>
+          <th colspan="{{attendanceSummary.length}}" class="attendance-summary-heading">
+            Attendance Summary
+          </th>
+        </tr>
+
+        <!-- Row 2 -->
+        <tr>
+          {{#each attendanceSummary}}
+          <th>{{label}}</th>
+          {{/each}}
+        </tr>
+
+        <!-- Row 3 -->
+        <tr>
+          {{#each attendanceSummary}}
+          <td>{{value}}</td>
+          {{/each}}
+        </tr>
+
+      </tbody>
+    </table>
+    <table>
+      <tbody>
+
+        <!-- Row 1 -->
+        <tr>
+          <th colspan="{{leaveSummary.length}}" class="attendance-summary-heading">
+            Leave Summary
+          </th>
+        </tr>
+
+        <!-- Row 2 -->
+        <tr>
+          {{#each leaveSummary}}
+          <th>{{LeaveName}}</th>
+          {{/each}}
+        </tr>
+
+        <!-- Row 3 -->
+        <tr>
+          {{#each leaveSummary}}
+          <td>{{UsedCount}}</td>
+          {{/each}}
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  {{/each}}
+  {{/each}}
+
+  <script src="./bootstrap.js"></script>
+  <script src="./jquery.js"></script>
+  <script src="./popper.js"></script>
+</body>
+
+</html>

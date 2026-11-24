@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{fileHeading}}</title>
+    <style>
+        .container {
+            margin: auto;
+            max-width: 800px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            font-size: 12px;
+            padding: 4px 5px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .footer .d-flex p {
+            width: 100%;
+        }
+
+        .border-bottom {
+            border-bottom: 1px solid black;
+        }
+
+        .border {
+            border: 1px solid black;
+        }
+
+        .border-top-0 {
+            border-top: 0px;
+        }
+
+        .border-none {
+            border: none;
+        }
+
+        .w-100 {
+            width: 100%;
+        }
+
+        .w-50 {
+            width: 50%;
+        }
+
+        .mt-20 {
+            margin-top: 20px;
+        }
+
+        .ml-20 {
+            margin-left: 20px;
+        }
+
+        .m-0 {
+            margin: 0px;
+        }
+
+        .pl-5 {
+            padding-left: 5px;
+        }
+
+        .p-0 {
+            padding: 0px;
+        }
+
+        .w-15per {
+            width: 12%;
+        }
+
+        .w-27per {
+            width: 27%;
+        }
+
+        .w-50 {
+            width: 50%;
+        }
+
+        .mw-396 {
+            max-width: 396px !important;
+        }
+
+        .white-space-no-wrap {
+            white-space: nowrap !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <p>
+                <b>Date: {{paymentDate}}</b>
+            </p>
+            <p>
+                <b>Name of Applicant: {{companyName}}</b>
+            </p>
+            <p>
+                <b>Please transfer the funds through NEFT to the following
+                    beneficiaries by debiting our respective accounts mentioned
+                    thereagainst:</b>
+            </p>
+        </div>
+        <div>
+            <table class="w-100">
+                <thead>
+                    <tr>
+                        <th>Sr No</th>
+                        <th>Amount</th>
+                        <th>Debit Account Number</th>
+                        <th>Beneficiary Bank IFSC CODE</th>
+                        <th>Beneficiary's Account No.</th>
+                        <th>Name of Beneficiary</th>
+                        <th>Purpose of payment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each paymentData}}
+                    <tr>
+                        <td>{{serialNumber}}</td>
+                        <td class="text-right">{{amount}}</td>
+                        <td>{{companyAccountNumber}}</td>
+                        <td>{{userBankIFSC}}</td>
+                        <td>{{userBankAccountNumber}}</td>
+                        <td>{{userNameAsOnBank}}</td>
+                        <td>{{purposeOfPayment}}</td>
+                    </tr>
+                    {{/each}}
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td class="text-right">{{totalExpenseAdvanceAmount}}</td>
+                        <td colspan="5"><b>Total amount to be transferred.</b></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><b>Total Amount in Words:</b></td>
+                        <td colspan="4">{{totalExpenseAdvanceAmountInWords}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-20 ml-20">
+            <p>
+                <b>I am/ We are aware of the RTGS system launched by the Reserve Bank
+                    of India.</b>
+            </p>
+            <p>
+                <b>I/We confirm that we have read the extant Terms and Conditions
+                    mentioned overleaf and agree to be bound by them.</b>
+            </p>
+            <p>
+                <b>Authorised Signatory</b>
+            </p>
+            <p>
+                <b>Name:</b>
+            </p>
+            <p>
+                <b>Contact Tel no: </b>
+            </p>
+            <p>
+                <b>For Bank use only:</b>
+            </p>
+            <p>
+                <b>Signatures verfied</b>
+            </p>
+            <p>
+                <b>Balance confirmed</b>
+            </p>
+            <p>
+                <b>ALM Reporting (if applicable)</b>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
