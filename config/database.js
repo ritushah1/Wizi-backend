@@ -15,22 +15,23 @@ const { EAppName } = require('../utils/commonVars');
 const APP_NAME = AppNameUtils.getAppName();
 console.log('Starting application as:', APP_NAME);
 console.log('Connecting to DB...');
-const msHrms = new Sequelize(dbDatabase, dbUser, dbPassword, {
-  host: dbHost,
-  dialect: dbDialect,
+const msHrms = new Sequelize('tp_dataset', 'postgres', '12345678', {
+  host: 'localhost',
+  port: 5433,
+  dialect: 'postgres',
   dialectOptions: {
     useUTC: false, // for reading from database
   },
   timezone: '+05:30',
   logging: false,
-  pool: {
-    max: APP_NAME == EAppName.REPORT_SOCKET ? 5 : 50,
-    min: APP_NAME == EAppName.REPORT_SOCKET ? 1 : 10,
-    acquire: 30000,
-    idle: 10000,
-  },
+  // pool: {
+  //   max: APP_NAME == EAppName.REPORT_SOCKET ? 5 : 50,
+  //   min: APP_NAME == EAppName.REPORT_SOCKET ? 1 : 10,
+  //   acquire: 30000,
+  //   idle: 10000,
+  // },
 });
 
 logger.info(`${dbDatabase} connected.`);
 
-module.exports = msHrms;
+module.exports = msHrms

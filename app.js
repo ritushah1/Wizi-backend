@@ -133,7 +133,7 @@ sequelize
       require('./modules/socket')(app);
       require('./socket-router')(app);
       require('./cron')();
-      require('./workers/punchoutWorker'); // ← starts the BullMQ worker
+      // require('./workers/punchoutWorker'); // ← starts the BullMQ worker
     }
 
     /**
@@ -226,8 +226,8 @@ sequelize
 
       const statusCode =
         Number.isInteger(requestedStatus) &&
-        requestedStatus >= 400 &&
-        requestedStatus < 500
+          requestedStatus >= 400 &&
+          requestedStatus < 500
           ? requestedStatus
           : 500;
 
